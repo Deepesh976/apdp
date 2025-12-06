@@ -1,13 +1,46 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { Phone } from "lucide-react";
+import { Phone, Zap, Shield, Droplets, ArrowRight, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { StatCard } from "../components/StatCard";
 
 const heroSlides = [
   "https://accordpower.co.in/images/header-slide/slide-1.jpg",
   "https://accordpower.co.in/images/header-slide/slide-2.jpg",
   "https://accordpower.co.in/images/header-slide/slide-3.jpg",
   "https://accordpower.co.in/images/header-slide/slide-4.jpg",
+];
+
+const features = [
+  {
+    icon: Zap,
+    title: "High Performance",
+    description: "Engineered for optimal efficiency and reliability",
+  },
+  {
+    icon: Shield,
+    title: "Built to Last",
+    description: "Durable construction designed for demanding environments",
+  },
+  {
+    icon: Droplets,
+    title: "Water Smart",
+    description: "Advanced metering and regulation solutions",
+  },
+];
+
+const roProducts = [
+  { title: "AP LED", image: "https://accordpower.co.in/images/products/01.jpg" },
+  { title: "AP Aqua", image: "https://accordpower.co.in/images/products/03.jpg" },
+  { title: "AP (1:1 1:3 3:3)", image: "https://accordpower.co.in/images/products/02.jpg" },
+  { title: "AP GSM", image: "https://accordpower.co.in/images/products/04.jpg" },
+];
+
+const waterProducts = [
+  { title: "Time Based – Single & Multi Coin", image: "https://accordpower.co.in/images/products/h5.jpg" },
+  { title: "Flow Based – Single & Multi Coin", image: "https://accordpower.co.in/images/products/h6.jpg" },
+  { title: "Flow Based – RFID Card", image: "https://accordpower.co.in/images/products/h7.jpg" },
+  { title: "Flow Based – RFID Card+Coin", image: "https://accordpower.co.in/images/products/h8.jpg" },
 ];
 
 export default function Index() {
@@ -25,7 +58,6 @@ export default function Index() {
     emblaApi.on("select", onSelect);
   }, [emblaApi, onSelect]);
 
-
   useEffect(() => {
     if (!emblaApi) return;
     let raf: number | undefined;
@@ -40,54 +72,35 @@ export default function Index() {
   }, [emblaApi]);
 
   return (
-    <div>
+    <div className="min-h-screen">
       {/* Hero Slider */}
-      <section className="relative">
+      <section className="relative overflow-hidden bg-black">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {heroSlides.map((src, idx) => (
               <div key={idx} className="relative min-w-0 shrink-0 grow-0 basis-full">
                 <div className="relative w-full bg-black">
-                  <img src={src} alt="Accord Power banner" className="block h-auto w-full max-h-[80vh] object-contain" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/0" />
+                  <img
+                    src={src}
+                    alt="Accord Power banner"
+                    className="block h-auto w-full max-h-[90vh] object-cover"
+                  />
                 </div>
               </div>
             ))}
           </div>
         </div>
-        {/* Overlay content */}
-        <div className="pointer-events-none absolute inset-0">
-          <div className="container flex h-full flex-col items-start justify-center gap-4 px-4">
-            <h1 className="pointer-events-auto max-w-[85%] text-2xl font-extrabold uppercase leading-tight tracking-wide text-white drop-shadow sm:max-w-[70%] md:text-4xl md:max-w-[55%]">
-              Control Panels & Digital Water Instruments
-            </h1>
-            <p className="pointer-events-auto max-w-[80%] text-sm text-white/90 sm:max-w-[60%] md:text-base">
-              Reliable RO control panels, GSM-enabled systems and metering solutions engineered for performance and safety.
-            </p>
-            <div className="pointer-events-auto mt-2 flex flex-wrap gap-2">
-              <Link
-                to="/products"
-                className="inline-flex items-center rounded-md bg-accent px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white shadow-sm transition-colors hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                View Products
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-md border border-white/70 bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white backdrop-blur transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <Phone className="h-4 w-4" /> Contact Sales
-              </Link>
-            </div>
-          </div>
-        </div>
-        {/* Dots */}
-        <div className="pointer-events-none absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+
+        {/* Slide Indicators */}
+        <div className="pointer-events-none absolute bottom-8 left-0 right-0 flex justify-center gap-2.5">
           {heroSlides.map((_, i) => (
             <button
               key={i}
               onClick={() => emblaApi && emblaApi.scrollTo(i)}
-              className={`pointer-events-auto h-2.5 w-2.5 rounded-full border border-white/70 transition ${
-                selectedIndex === i ? "bg-white" : "bg-white/30 hover:bg-white/50"
+              className={`pointer-events-auto transition-all duration-300 ${
+                selectedIndex === i
+                  ? "h-3 w-8 bg-white rounded-full"
+                  : "h-2.5 w-2.5 bg-white/40 rounded-full hover:bg-white/60"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
@@ -95,136 +108,131 @@ export default function Index() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="container py-14 md:py-20">
-        <div className="grid items-center gap-8 md:grid-cols-2">
-          <div className="overflow-hidden rounded-lg shadow-sm">
-            <img
-              src="https://accordpower.co.in/images/bg/about.jpg"
-              alt="About Accord Power"
-              className="h-full w-full object-cover"
-            />
+      {/* Features Section */}
+      <section className="bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 py-12 md:py-16">
+        <div className="container">
+          <div className="grid gap-6 md:grid-cols-3">
+            {features.map((feature, idx) => {
+              const Icon = feature.icon;
+              const accentColors = ["bg-accent/10", "bg-primary/10", "bg-secondary/10"];
+              const textColors = ["text-accent", "text-primary", "text-secondary"];
+              return (
+                <div
+                  key={feature.title}
+                  className="group relative flex flex-col items-center rounded-xl bg-white p-6 transition duration-300 hover:shadow-xl hover:-translate-y-1"
+                >
+                  <div className="absolute top-0 left-1/2 h-1 w-12 -translate-x-1/2 rounded-full bg-gradient-to-r from-accent to-primary transition group-hover:w-16" />
+                  <div className={`mb-3 flex justify-center rounded-lg ${accentColors[idx]} p-3 transition group-hover:scale-110`}>
+                    <Icon className={`h-6 w-6 ${textColors[idx]}`} />
+                  </div>
+                  <h3 className="mb-2 text-lg font-bold text-primary">{feature.title}</h3>
+                  <p className="text-sm text-foreground/70 leading-relaxed">{feature.description}</p>
+                </div>
+              );
+            })}
           </div>
-          <div>
-            <h2 className="mb-4 text-3xl font-extrabold uppercase tracking-wide text-primary">About Accord Power</h2>
-            <p className="mb-4 text-foreground/80">
-              ACCORD POWER CONVERSION PVT LTD (APCP) established in 2012, manufacturing Power Supplies and Chargers for
-              Water Purifiers, Set Top Boxes, Laptops, Office Automation and more.
+        </div>
+      </section>
+
+      {/* About Us & Statistics Section */}
+      <section className="bg-gradient-to-b from-white to-slate-50 py-16 md:py-28">
+        <div className="container">
+          {/* About Us Content */}
+          <div className="mb-16 max-w-3xl">
+            <div className="mb-2 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-accent">
+              About Us
+            </div>
+            <h2 className="mb-6 text-4xl font-black uppercase leading-tight tracking-tight text-primary md:text-5xl">
+              A House Of Power Solutions
+            </h2>
+            <p className="mb-4 text-lg text-foreground/80 leading-relaxed">
+              Accord Power Conversion Pvt. Ltd established in 2012. Specializes in manufacturing Electric Vehicle Chargers for 2-wheelers, 3-wheelers, and 4-wheelers, along with a diverse range of Power Supplies, Chargers, and Water Purifier Controllers. Set-Top-Boxes, Laptops, Office automation, and more.
             </p>
-            <p className="mb-6 text-foreground/80">
-              Accord Power Digital Products (APDP) is a Group company of APCP, manufacturing RO Control Panels, Digital
-              Water Regulating Instruments, LPS, HPS and Digital Flow Meter for RO Plants.
+            <p className="text-lg text-foreground/80 leading-relaxed">
+              Accord's products have received strong market acceptance, serving diverse sectors such as Electric Vehicles, Telecom, Water Purification, Set-Top Boxes, Laptops, and Industrial sectors. Accord Power is established as a trusted and reliable name in the power supply and EV charger manufacturing industry.
             </p>
             <Link
               to="/about"
-              className="inline-block rounded bg-accent px-5 py-2.5 font-semibold uppercase tracking-wide text-white transition-colors hover:bg-accent/90"
+              className="group mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-bold uppercase tracking-wide text-white transition-all hover:bg-primary/90 hover:shadow-lg active:scale-95"
             >
               Read More
+              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-        </div>
-      </section>
 
-      {/* Products Section */}
-      <section className="bg-primary/5 py-14 md:py-16">
-        <div className="container">
-          <h2 className="mb-8 text-center text-3xl font-extrabold uppercase tracking-wide text-primary">Our Products</h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* RO Control Panel */}
-            <div>
-              <h3 className="mb-4 border-b-2 border-accent pb-2 text-xl font-bold uppercase tracking-wide text-primary">RO Control Panel</h3>
-              <div className="grid gap-6 sm:grid-cols-2">
-                {[
-                  { title: "AP LED", image: "https://accordpower.co.in/images/products/01.jpg" },
-                  { title: "AP Aqua", image: "https://accordpower.co.in/images/products/03.jpg" },
-                  { title: "AP (1:1 1:3 3:3)", image: "https://accordpower.co.in/images/products/02.jpg" },
-                  { title: "AP GSM", image: "https://accordpower.co.in/images/products/04.jpg" },
-                ].map((p) => (
-                  <Link
-                    key={p.title}
-                    to="/products"
-                    className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm transition hover:shadow-md"
-                  >
-                    <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-white">
-                      <img
-                        src={p.image}
-                        alt={p.title}
-                        className="max-h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="h-14 md:h-16 p-4 text-center text-sm font-semibold uppercase tracking-wide text-primary group-hover:text-accent flex items-center justify-center">
-                      {p.title}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            {/* Digital Water Regulating Instruments */}
-            <div>
-              <h3 className="mb-4 border-b-2 border-accent pb-2 text-xl font-bold uppercase tracking-wide text-primary">Digital Water Regulating Instruments</h3>
-              <div className="grid gap-6 sm:grid-cols-2">
-                {[
-                  { title: "Time Based – Single & Multi Coin", image: "https://accordpower.co.in/images/products/h5.jpg" },
-                  { title: "Flow Based – Single & Multi Coin", image: "https://accordpower.co.in/images/products/h6.jpg" },
-                  { title: "Flow Based – RFID Card", image: "https://accordpower.co.in/images/products/h7.jpg" },
-                  { title: "Flow Based – RFID Card+Coin", image: "https://accordpower.co.in/images/products/h8.jpg" },
-                ].map((p) => (
-                  <Link
-                    key={p.title}
-                    to="/products"
-                    className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm transition hover:shadow-md"
-                  >
-                    <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-white">
-                      <img
-                        src={p.image}
-                        alt={p.title}
-                        className="max-h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="h-14 md:h-16 p-4 text-center text-sm font-semibold uppercase tracking-wide text-primary group-hover:text-accent flex items-center justify-center">
-                      {p.title}
-                    </div>
-                  </Link>
-                ))}
-              </div>
+          {/* Statistics Section */}
+          <div>
+            <h3 className="mb-12 text-center text-2xl font-bold uppercase tracking-tight text-foreground">
+              Our Statistics
+            </h3>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+              <StatCard value={3} label="Manufacturing Units" />
+              <StatCard value={50} suffix="+" label="Certified Products" />
+              <StatCard value={500} suffix="+" label="Products" />
+              <StatCard value={30} suffix="+" label="Industry Experience" />
+              <StatCard value={700} suffix="+" label="Team" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map + Contact Section */}
-      <section className="container py-14 md:py-20">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="overflow-hidden rounded-lg border border-border shadow-sm">
+      {/* CTA Section */}
+      <section className="bg-gradient-to-r from-primary via-primary/90 to-accent py-16 md:py-24">
+        <div className="container">
+          <div className="grid items-center gap-12 md:grid-cols-2">
+            <div className="space-y-6">
+              <h2 className="text-4xl font-black uppercase leading-tight tracking-tight text-white">
+                Ready to Transform Your Water Solutions?
+              </h2>
+              <p className="text-lg text-white/90 leading-relaxed">
+                Get in touch with our team to explore how our innovative control panels and metering solutions can optimize your operations.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-bold uppercase tracking-wide text-primary shadow-lg transition hover:shadow-xl hover:bg-slate-100 active:scale-95"
+                >
+                  Get in Touch
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <a
+                  href="tel:+911234567890"
+                  className="group inline-flex items-center gap-2 rounded-lg border-2 border-white px-6 py-3 font-bold uppercase tracking-wide text-white transition hover:bg-white/10"
+                >
+                  <Phone className="h-4 w-4" />
+                  Call Now
+                </a>
+              </div>
+            </div>
+            <div className="hidden md:block rounded-2xl overflow-hidden shadow-2xl">
+              <iframe
+                title="Accord Power Location"
+                src="https://www.google.com/maps?q=ACCORD%20POWER%20CONVERSION%20PVT%20LTD&output=embed"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile Map */}
+      <section className="md:hidden bg-white py-12 border-t border-slate-200">
+        <div className="container">
+          <h3 className="mb-6 text-2xl font-bold text-primary">Find Us</h3>
+          <div className="overflow-hidden rounded-xl shadow-lg">
             <iframe
               title="Accord Power Location"
               src="https://www.google.com/maps?q=ACCORD%20POWER%20CONVERSION%20PVT%20LTD&output=embed"
               width="100%"
-              height="420"
+              height="300"
               style={{ border: 0 }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-          </div>
-          <div className="flex flex-col justify-center rounded-lg border border-border bg-primary/5 p-6">
-            <h3 className="mb-3 text-2xl font-bold uppercase tracking-wide text-primary">Talk to Us</h3>
-            <p className="mb-4 text-foreground/80">
-              Reach out for product details, specifications or custom requirements.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex items-center rounded-md bg-accent px-5 py-2.5 font-semibold uppercase tracking-wide text-white shadow-sm transition-colors hover:bg-accent/90"
-              >
-                Contact Form
-              </Link>
-              <a
-                href="tel:+911234567890"
-                className="inline-flex items-center rounded-md border border-input px-5 py-2.5 font-semibold uppercase tracking-wide text-primary transition hover:border-accent hover:text-accent"
-              >
-                Call +91 12345 67890
-              </a>
-            </div>
           </div>
         </div>
       </section>

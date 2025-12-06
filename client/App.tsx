@@ -10,6 +10,7 @@ import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
 import Layout from "@/components/layout/Layout";
 import About from "@/pages/About";
+import Quality from "@/pages/Quality";
 import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
 import Contact from "@/pages/Contact";
@@ -27,6 +28,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
+              <Route path="/quality" element={<Quality />} />
               <Route path="/products" element={<Products />} />
               <Route path="/products/:slug" element={<ProductDetail />} />
               <Route path="/contact" element={<Contact />} />

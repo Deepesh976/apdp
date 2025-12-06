@@ -45,6 +45,7 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-1">
           <NavItem to="/">Home</NavItem>
           <NavItem to="/about">About Us</NavItem>
+          <NavItem to="/quality">Quality</NavItem>
           <a
             href="http://accordpower.in/"
             target="_blank"
@@ -71,6 +72,7 @@ export default function Header() {
           <div className="container flex flex-col py-2">
             <NavLink onClick={() => setOpen(false)} to="/" className="px-2 py-3 text-primary hover:text-accent">Home</NavLink>
             <NavLink onClick={() => setOpen(false)} to="/about" className="px-2 py-3 text-primary hover:text-accent">About Us</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/quality" className="px-2 py-3 text-primary hover:text-accent">Quality</NavLink>
             <a
               href="http://accordpower.in/"
               target="_blank"

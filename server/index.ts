@@ -1,23 +1,25 @@
-import "dotenv/config";
+// server/index.ts
 import express from "express";
 import cors from "cors";
-import { handleDemo } from "./routes/demo";
+
+import contactRouter from "./routes/contact";
+import productEnquiryRouter from "./routes/productEnquiry";
 
 export function createServer() {
+  console.log("🟣 createServer(): creating Express app");
+
   const app = express();
 
-  // Middleware
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // Example API routes
-  app.get("/api/ping", (_req, res) => {
-    const ping = process.env.PING_MESSAGE ?? "ping";
-    res.json({ message: ping });
-  });
+  app.use("/api/contact", contactRouter);
+  app.use("/api/product-enquiry", productEnquiryRouter);
 
-  app.get("/api/demo", handleDemo);
+  app.get("/api/health", (_req, res) => {
+    res.json({ status: "ok" });
+  });
 
   return app;
 }

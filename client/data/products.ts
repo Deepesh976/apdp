@@ -14,6 +14,7 @@ export interface Product {
   specs: ProductSpecKV[];
   image: string;
   gallery?: string[];
+  brochureUrl?: string;
 }
 
 const img = (path: string) => `https://accordpower.co.in/${path.replace(/^\//, "")}`;
@@ -40,6 +41,7 @@ export const PRODUCTS: Product[] = [
       { label: "Output Connection", value: "Raw water pump, High pressure pump, Dosing pump" },
     ],
     image: img("images/products/01.jpg"),
+    brochureUrl: "https://accordpower.co.in/brochures/ap-led.pdf",
   },
   {
     slug: "ap-aqua",
@@ -69,6 +71,7 @@ export const PRODUCTS: Product[] = [
     ],
     image: img("images/products/03.jpg"),
     gallery: [img("images/products/02-1.jpg"), img("images/products/03-1.jpg")],
+    brochureUrl: "https://accordpower.co.in/brochures/ap-aqua.pdf",
   },
   {
     slug: "ap-11-13-33",
@@ -96,6 +99,7 @@ export const PRODUCTS: Product[] = [
       { label: "Panel Configuration", value: "AP 1:1 / 1:3 / 3:3 (TDS & NON‑TDS)" },
     ],
     image: img("images/products/02.jpg"),
+    brochureUrl: "https://accordpower.co.in/brochures/ap-1-1-1-3-3-3.pdf",
   },
   {
     slug: "ap-gsm",
@@ -114,6 +118,7 @@ export const PRODUCTS: Product[] = [
       { label: "Variant (3:3)", value: "RWP 5 HP, HPP 5 HP; protections and outputs as above" },
     ],
     image: img("images/products/04.jpg"),
+    brochureUrl: "https://accordpower.co.in/brochures/ap-gsm.pdf",
   },
   {
     slug: "time-based",
@@ -134,6 +139,7 @@ export const PRODUCTS: Product[] = [
       { label: "Output Connection", value: "Water pump, AC solenoid valve" },
     ],
     image: img("images/products/05.jpg"),
+    brochureUrl: "https://accordpower.co.in/brochures/time-based.pdf",
   },
   {
     slug: "flow-based",
@@ -145,7 +151,7 @@ export const PRODUCTS: Product[] = [
       "Battery backup with solar charging provision",
       "Up to six types of multi‑coins programmable",
       "Brand promotion on 2‑line 16‑digit LCD",
-      "Multi‑denomination (Rs 1–10) for multi dispensing",
+      "Multi���denomination (Rs 1–10) for multi dispensing",
     ],
     specs: [
       { label: "ATW Configuration", value: "Flow Based – Single & Multi Coin Water Controller" },
@@ -154,6 +160,7 @@ export const PRODUCTS: Product[] = [
       { label: "Output Connection", value: "Water pump, AC solenoid valve, flow sensor" },
     ],
     image: img("images/products/06.jpg"),
+    brochureUrl: "https://accordpower.co.in/brochures/flow-based.pdf",
   },
   {
     slug: "flow-based-rfid",
@@ -176,6 +183,7 @@ export const PRODUCTS: Product[] = [
       { label: "Output Connection", value: "Water pump, AC/DC solenoid valve, flow sensor" },
     ],
     image: img("images/products/07.jpg"),
+    brochureUrl: "https://accordpower.co.in/brochures/flow-based-rfid.pdf",
   },
   {
     slug: "flow-based-rfid-coin",
@@ -200,6 +208,7 @@ export const PRODUCTS: Product[] = [
       { label: "Output Connection", value: "Water pump, AC/DC solenoid valve, flow sensor" },
     ],
     image: img("images/products/08.jpg"),
+    brochureUrl: "https://accordpower.co.in/brochures/flow-based-rfid-coin.pdf",
   },
 ];
 

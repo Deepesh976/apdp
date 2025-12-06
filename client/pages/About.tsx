@@ -1,142 +1,719 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Award, Factory, Lightbulb, Users } from "lucide-react";
+import { Award, Factory, Lightbulb, Users, ArrowRight, CheckCircle, Zap, Shield, X } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const aboutCopy = {
   paragraphs: [
     "Accord Power Conversion Pvt Ltd (APCP) established in the year 2012, engaged into manufacturing of Power Supplies and Chargers for Water Purifiers, Set Top Boxes, Laptops, Office Automation and more.",
     "Accord Power Digital Products (APDP) is a Group company of APCP, engaged into manufacturing of RO Control Panels, Digital Water Regulating Instruments, Low Pressure Switch (LPS), High Pressure Switch (HPS) and Digital Flow Meter for Commercial/Industrial RO Plants.",
-    "Right from inception, the manufacturing facilities and quality systems have been established in line with international product and quality standards. Accord products are approved by many states for their RO water plants.",
-    "Accord philosophy is to focus on a specialized field of Power Conversion products with a commitment to serve global market needs with on-time services.",
-    "Accord family is a 200-member highly motivated and qualified team with experienced functional heads. The R&D team continuously strives for innovative solutions, reliability and cost competitiveness.",
-    "The team is headed by Mr. A. Venkat Reddy, who has an electronics background and over 20 years of experience in Power Electronics serving major OEMs in the country.",
   ],
+  vision: "To focus on specialized Power Conversion products meeting global market needs with on-time services and dependable support.",
+  mission: "Continuous innovation, reliability, and cost-competitiveness through dedicated R&D and a passionate team.",
+  values: "Driven by integrity, responsibility, excellence, innovation, and unity—creating sustainable value for people, partners, and the planet.",
 };
 
+const achievements = [
+  { icon: Factory, title: "Established 2012", description: "Over a decade of excellence in power solutions" },
+  { icon: Users, title: "200+ Team Members", description: "Experienced professionals driving innovation" },
+  { icon: Award, title: "State Approved", description: "Quality systems aligned with global standards" },
+  { icon: Zap, title: "20+ Years Experience", description: "Led by power electronics industry veterans" },
+];
+
+const capabilities = [
+  "RO Control Panels (AP LED, AP Aqua, AP GSM, AP 1:1/1:3/3:3)",
+  "Digital Water Regulating Instruments",
+  "Low & High Pressure Switches (LPS/HPS)",
+  "Digital Flow Meter for Commercial/Industrial RO",
+];
+
+const standards = [
+  "ISO Certified Manufacturing",
+  "International Quality Standards",
+  "Global Market Approved",
+  "24/7 Quality Assurance",
+];
+
+const milestones = [
+  {
+    year: 2012,
+    title: "Genesis of the Journey",
+    description: "Marking the genesis of its journey, Accord embarked on crafting adapters for water purifying & telecom applications. 5000 sft area.",
+    position: "right",
+    color: "bg-red-400",
+  },
+  {
+    year: 2013,
+    title: "ISO Certification",
+    description: "Accord gets ISO 9001:2008 'certified, a testament' to its commitment to excellence.",
+    position: "left",
+    color: "bg-blue-400",
+  },
+  {
+    year: 2014,
+    title: "Preferred Vendor Status",
+    description: "Accord became as the preferred vendor for 'the top 10 OEMs, solidifying its position within the industry'.",
+    position: "right",
+    color: "bg-green-400",
+  },
+  {
+    year: 2015,
+    title: "APDP Launch",
+    description: "Initiated APDP towards produ cing products tailored for commercial water plants.",
+    position: "left",
+    color: "bg-orange-400",
+  },
+  {
+    year: 2017,
+    title: "BIS Certification",
+    description: "Accord becomes the first 'India in company to secure approval for over 50 products from BIS, a testament to its unwavering dedication to quality'.",
+    position: "right",
+    color: "bg-red-400",
+  },
+  {
+    year: 2021,
+    title: "Facility Expansion",
+    description: "The company expanded by 'establish ing a state-of-the-art facility, encompassing 'an additional 20,000 sft area' dedicated to Adapters and a separate division for EV products.",
+    position: "left",
+    color: "bg-blue-400",
+  },
+  {
+    year: 2022,
+    title: "EV Unit Transition",
+    description: "EV unit transitioned to a grand '50,000 sft space, achieving approval from ARAI & ICAT for its line of prod ucts, marking a' milestone in innovation & compliance.",
+    position: "right",
+    color: "bg-green-400",
+  },
+  {
+    year: 2023,
+    title: "SMT Facility",
+    description: "Development of a fully automatic 'SMT facility, enabling the prod uction of 1.0L EV Chargers per month,' underscoring the company's commitment to cutting-edge manufacturing.",
+    position: "left",
+    color: "bg-orange-400",
+  },
+  {
+    year: 2024,
+    title: "Expansion",
+    description: "Manufacturing facility added another 40,000 sft with this 1 million adapters and charger can be produced.",
+    position: "right",
+    color: "bg-red-400",
+  },
+];
+
+const featuredDirector = {
+  name: "Mr. Adit Venkat Reddy",
+  title: "Managing Director",
+  email: "adit@accordpower.in",
+  bio: "Mr. Adit venkat Reddy boasts an impressive 30-year tenure in the manufacturing sector. Drawing from his extensive experience and firm understanding of the industry, he took the bold step to establish his own venture in 2012. Since then, Accord has blossomed under his visionary leadership, transforming from a nascent startup into an entrepreneurial powerhouse. Mr. Reddy excels in positioning Accord Power Group's Power Conversion as a beacon of inspiration for aspiring business leaders worldwide.",
+};
+
+const directors = [
+  {
+    name: "Sompath Reddy",
+    title: "Technical Director",
+    email: "sompath@accordpower.in",
+    avatar: "SR",
+  },
+  {
+    name: "Sridher Reddy",
+    title: "Operations Director",
+    email: "sridher@accordpower.in",
+    avatar: "SHR",
+  },
+  {
+    name: "Gaurov Saini",
+    title: "Managing Partner",
+    email: "gaurov@accordpower.in",
+    avatar: "GS",
+  },
+  {
+    name: "Sheela Saini",
+    title: "Director",
+    email: "sheela@accordpower.in",
+    avatar: "SS",
+  },
+];
+
+const coreTeam = [
+  {
+    name: "Sandeep Kilori",
+    title: "ODF Head & Marketing",
+    email: "sandeep@accordpower.in",
+    avatar: "SK",
+  },
+  {
+    name: "Ch. Ramesh",
+    title: "CTO/VP",
+    email: "ramesh@accordpower.in",
+    avatar: "CR",
+  },
+  {
+    name: "Ch. Nagini",
+    title: "Corporate HR",
+    email: "nagini@accordpower.in",
+    avatar: "CN",
+  },
+  {
+    name: "N. Nageshwer Rao",
+    title: "CFO",
+    email: "nageshwer@accordpower.in",
+    avatar: "NNR",
+  },
+  {
+    name: "J. Shleep",
+    title: "Finance & Accounts",
+    email: "shleep@accordpower.in",
+    avatar: "JS",
+  },
+  {
+    name: "S. Ujwal Kumar Reddy",
+    title: "Management Representative",
+    email: "ujwal@accordpower.in",
+    avatar: "UKR",
+  },
+  {
+    name: "Prasanth Lenke",
+    title: "HOD - Design",
+    email: "prasanth@accordpower.in",
+    avatar: "PL",
+  },
+  {
+    name: "A. Srikarith Reddy",
+    title: "M&E M/C Control Panel",
+    email: "srikarith@accordpower.in",
+    avatar: "SR",
+  },
+  {
+    name: "A. Vijay Bhaskar Reddy",
+    title: "Manager Operation",
+    subtitle: "SMPS & Power Sources",
+    email: "vijay@accordpower.in",
+    avatar: "VBR",
+  },
+  {
+    name: "K. Muralidhar Rao",
+    title: "Manager - Service",
+    email: "muralidhar@accordpower.in",
+    avatar: "MR",
+  },
+  {
+    name: "L. Prathap Raju",
+    title: "Manager Operation",
+    subtitle: "RCC Charger Factory",
+    email: "prathap@accordpower.in",
+    avatar: "PR",
+  },
+];
+
+type ProfileType = 'director' | 'coreTeam' | null;
+
+interface SelectedProfile {
+  type: ProfileType;
+  data: any;
+}
+
 export default function About() {
+  const [selectedProfile, setSelectedProfile] = useState<SelectedProfile | null>(null);
+
+  const openProfile = (type: ProfileType, data: any) => {
+    setSelectedProfile({ type, data });
+  };
+
+  const closeProfile = () => {
+    setSelectedProfile(null);
+  };
+
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative">
-        <div className="relative h-[32vh] w-full overflow-hidden md:h-[42vh]">
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-20 md:pt-32">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+        </div>
+
+        <div className="container relative z-10">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div>
+              <div className="mb-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-bold uppercase tracking-widest text-accent">
+                Our Story
+              </div>
+              <h1 className="mb-6 text-5xl font-black uppercase leading-tight tracking-tighter text-primary sm:text-6xl">
+                Accord Power Excellence
+              </h1>
+              <p className="mb-6 text-lg text-foreground/75 leading-relaxed max-w-xl">
+                Leading the industry since 2012 with innovative power conversion solutions and water management systems trusted by hundreds of clients worldwide.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  to="/products"
+                  className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-accent to-accent/90 px-8 py-4 font-bold uppercase tracking-wide text-white shadow-lg transition-all hover:shadow-2xl hover:scale-105 active:scale-95"
+                >
+                  View Products
+                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1.5" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 rounded-xl border-2 border-primary/20 bg-white px-8 py-4 font-bold uppercase tracking-wide text-primary shadow-md transition-all hover:border-primary hover:bg-primary/5 active:scale-95"
+                >
+                  Get in Touch
+                </Link>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="https://accordpower.co.in/images/bg/about.jpg"
+                  alt="Accord Power facilities"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 md:mt-24">
           <img
             src="https://accordpower.co.in/images/bg/about.jpg"
             alt="About Accord Power"
-            className="h-full w-full object-cover"
+            className="h-auto w-full object-cover max-h-96 lg:hidden rounded-b-2xl"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
-          <div className="absolute inset-0">
-            <div className="container flex h-full items-end pb-6">
-              <div>
-                <h1 className="text-3xl font-extrabold uppercase tracking-wide text-white drop-shadow md:text-5xl">
-                  About Us
-                </h1>
-                <nav className="mt-2 text-sm text-white/80">
-                  <Link to="/" className="hover:text-white">Home</Link>
-                  <span className="mx-2">/</span>
-                  <span className="text-white">About</span>
-                </nav>
-              </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {achievements.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="group rounded-2xl border border-slate-200 bg-white p-8 transition hover:shadow-lg hover:border-accent"
+                >
+                  <div className="mb-4 inline-flex rounded-lg bg-accent/10 p-3 transition group-hover:bg-accent/20">
+                    <Icon className="h-6 w-6 text-accent" />
+                  </div>
+                  <h3 className="mb-2 font-bold text-primary uppercase tracking-wide">{item.title}</h3>
+                  <p className="text-sm text-foreground/70">{item.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Company Overview */}
+      <section className="container py-16 md:py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="space-y-6">
+            <div>
+              <h2 className="mb-4 text-4xl font-black uppercase leading-tight tracking-tighter text-primary">
+                Who We Are
+              </h2>
+              <p className="text-lg text-foreground/75 leading-relaxed">
+                {aboutCopy.paragraphs[0]}
+              </p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-gradient-to-br from-primary/5 to-accent/5 p-6">
+              <p className="text-foreground/80 leading-relaxed">
+                {aboutCopy.paragraphs[1]}
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-4">
+            <div className="rounded-xl border border-slate-200 bg-white p-8 hover:shadow-lg transition">
+              <h3 className="mb-3 flex items-center gap-3 font-bold text-primary uppercase tracking-wide">
+                <Shield className="h-5 w-5 text-accent" />
+                Quality Commitment
+              </h3>
+              <p className="text-sm text-foreground/70">Manufacturing facilities and quality systems established in line with international standards. Approved by multiple states for RO water plants.</p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-8 hover:shadow-lg transition">
+              <h3 className="mb-3 flex items-center gap-3 font-bold text-primary uppercase tracking-wide">
+                <Lightbulb className="h-5 w-5 text-accent" />
+                Innovation Focus
+              </h3>
+              <p className="text-sm text-foreground/70">R&D team continuously strives for innovative solutions, reliability, and cost-competitiveness across all product lines.</p>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-8 hover:shadow-lg transition">
+              <h3 className="mb-3 flex items-center gap-3 font-bold text-primary uppercase tracking-wide">
+                <Award className="h-5 w-5 text-accent" />
+                Global Reach
+              </h3>
+              <p className="text-sm text-foreground/70">Focused on serving global market needs with on-time services and dependable support to OEMs and enterprises worldwide.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Company Intro */}
-      <section className="container py-12 md:py-20">
-        <div className="grid items-start gap-10 md:grid-cols-2">
-          <div className="order-2 md:order-1">
-            <h2 className="mb-4 text-3xl font-extrabold uppercase tracking-wide text-primary">About Accord Power</h2>
-            <div className="space-y-4 text-foreground/80">
-              {aboutCopy.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+      {/* Milestones Section */}
+      <section className="bg-gradient-to-b from-white via-slate-50/50 to-white py-20 md:py-32">
+        <div className="container">
+          <div className="mb-20 text-center">
+            <div className="mb-4 inline-flex gap-2">
+              <div className="h-1.5 w-8 bg-accent rounded-full"></div>
+              <div className="h-1.5 w-8 bg-accent rounded-full"></div>
+            </div>
+            <h2 className="mb-4 text-4xl font-black uppercase tracking-tighter text-primary">Our Journey</h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground/70">Milestones of growth and innovation since 2012</p>
+          </div>
+
+          <div className="relative">
+            {/* Timeline Line - Hidden on mobile */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-primary via-accent to-primary hidden md:block" />
+
+            {/* Timeline Items */}
+            <div className="space-y-8 md:space-y-16">
+              {milestones.map((milestone, idx) => (
+                <div key={idx} className="relative group">
+                  {/* Center Dot */}
+                  <div className="absolute left-1/2 top-8 h-6 w-6 -translate-x-1/2 rounded-full border-4 border-white bg-accent shadow-lg z-10 hidden md:block group-hover:scale-125 transition-transform duration-300" />
+
+                  {/* Content Container */}
+                  <div className={`flex flex-col md:flex-row ${milestone.position === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-0`}>
+                    {/* Year Badge */}
+                    <div className={`flex ${milestone.position === 'left' ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'} justify-start md:w-1/2`}>
+                      <div className={`flex items-center justify-center h-24 w-24 rounded-full ${milestone.color} text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110`}>
+                        <div className="text-2xl font-black tabular-nums text-center">{milestone.year}</div>
+                      </div>
+                    </div>
+
+                    {/* Spacer */}
+                    <div className="hidden md:block w-0" />
+
+                    {/* Description Card */}
+                    <div className={`md:w-1/2 flex ${milestone.position === 'left' ? 'md:pr-12' : 'md:pl-12'}`}>
+                      <div className="w-full rounded-2xl bg-white p-8 border border-slate-200 shadow-md hover:shadow-2xl transition-all duration-300 hover:border-accent/30 group-hover:translate-y--1">
+                        <div className="flex items-start gap-4 mb-3">
+                          <div className="h-2 w-2 rounded-full bg-accent flex-shrink-0 mt-2" />
+                          <h3 className="font-bold text-primary uppercase tracking-wide text-base">{milestone.title}</h3>
+                        </div>
+                        <p className="text-sm text-foreground/70 leading-relaxed pl-6">{milestone.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                to="/products"
-                className="inline-flex items-center rounded-md bg-accent px-5 py-2.5 font-semibold uppercase tracking-wide text-white shadow-sm transition-colors hover:bg-accent/90"
+          </div>
+
+          {/* Timeline Stats */}
+          <div className="mt-20 grid gap-6 md:grid-cols-3 pt-12 border-t border-slate-200">
+            <div className="text-center group">
+              <div className="text-4xl font-black text-accent mb-2 group-hover:scale-110 transition-transform">{milestones.length}</div>
+              <p className="text-sm uppercase tracking-wide text-foreground/60">Major Milestones</p>
+            </div>
+            <div className="text-center group">
+              <div className="text-4xl font-black text-primary mb-2 group-hover:scale-110 transition-transform">{milestones[milestones.length - 1].year - milestones[0].year + 1}</div>
+              <p className="text-sm uppercase tracking-wide text-foreground/60">Years of Excellence</p>
+            </div>
+            <div className="text-center group">
+              <div className="text-4xl font-black text-primary mb-2 group-hover:scale-110 transition-transform">∞</div>
+              <p className="text-sm uppercase tracking-wide text-foreground/60">Continuous Growth</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Vision & Mission & Values */}
+      <section className="bg-gradient-to-r from-primary/95 via-primary/90 to-accent py-16 md:py-24">
+        <div className="container">
+          <div className="grid gap-12 md:grid-cols-3">
+            <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur p-8">
+              <div className="mb-4 inline-flex rounded-lg bg-white/20 p-3">
+                <Lightbulb className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="mb-4 text-2xl font-bold uppercase tracking-wide text-white">Our Vision</h3>
+              <p className="text-lg text-white/90 leading-relaxed">
+                {aboutCopy.vision}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur p-8">
+              <div className="mb-4 inline-flex rounded-lg bg-white/20 p-3">
+                <Zap className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="mb-4 text-2xl font-bold uppercase tracking-wide text-white">Our Mission</h3>
+              <p className="text-lg text-white/90 leading-relaxed">
+                {aboutCopy.mission}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur p-8">
+              <div className="mb-4 inline-flex rounded-lg bg-white/20 p-3">
+                <Award className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="mb-4 text-2xl font-bold uppercase tracking-wide text-white">Our Values</h3>
+              <p className="text-lg text-white/90 leading-relaxed">
+                {aboutCopy.values}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities & Standards */}
+      <section className="container py-16 md:py-24">
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <h2 className="mb-8 text-3xl font-black uppercase tracking-tighter text-primary">Our Capabilities</h2>
+            <div className="space-y-4">
+              {capabilities.map((capability, idx) => (
+                <div key={idx} className="flex items-start gap-4 rounded-lg border border-slate-200 bg-white p-4 hover:shadow-md transition">
+                  <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
+                  <span className="text-foreground/80">{capability}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="mb-8 text-3xl font-black uppercase tracking-tighter text-primary">Quality Standards</h2>
+            <div className="space-y-4">
+              {standards.map((standard, idx) => (
+                <div key={idx} className="flex items-start gap-4 rounded-lg border border-slate-200 bg-white p-4 hover:shadow-md transition">
+                  <Award className="h-5 w-5 text-accent flex-shrink-0 mt-1" />
+                  <span className="text-foreground/80">{standard}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Directors Section */}
+      <section className="bg-gradient-to-b from-white to-slate-50 py-16 md:py-24">
+        <div className="container">
+          {/* Section Header */}
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-flex gap-2">
+              <div className="h-1.5 w-8 bg-accent rounded-full"></div>
+              <div className="h-1.5 w-8 bg-accent rounded-full"></div>
+            </div>
+            <h2 className="mb-4 text-4xl font-black uppercase tracking-tighter text-primary">Directors</h2>
+          </div>
+
+          {/* Featured Director */}
+          <div
+            onClick={() => openProfile('director', featuredDirector)}
+            className="mb-16 rounded-2xl border border-slate-200 bg-white p-8 shadow-lg md:p-12 cursor-pointer transition hover:shadow-2xl hover:border-accent/50"
+          >
+            <div className="grid items-center gap-8 md:grid-cols-2">
+              <div className="flex items-center justify-center">
+                <div className="relative h-64 w-64 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 overflow-hidden flex items-center justify-center group-hover:from-accent/30 group-hover:to-primary/30 transition">
+                  <div className="text-6xl font-bold text-accent">AVR</div>
+                </div>
+              </div>
+              <div>
+                <h3 className="mb-2 text-3xl font-black uppercase tracking-tighter text-primary">{featuredDirector.name}</h3>
+                <p className="mb-4 text-lg font-semibold uppercase tracking-wide text-accent">{featuredDirector.title}</p>
+                <p className="mb-6 text-foreground/80 leading-relaxed">
+                  {featuredDirector.bio}
+                </p>
+                <a href={`mailto:${featuredDirector.email}`} className="text-sm font-semibold text-primary hover:text-accent transition">
+                  {featuredDirector.email}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Other Directors */}
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {directors.map((director) => (
+              <div
+                key={director.name}
+                onClick={() => openProfile('director', director)}
+                className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm hover:shadow-lg transition cursor-pointer hover:border-accent/50"
               >
-                Explore Products
-              </Link>
+                <div className="mb-4 flex justify-center">
+                  <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center text-white text-3xl font-bold group-hover:from-primary/50 group-hover:to-accent/50 transition">
+                    {director.avatar}
+                  </div>
+                </div>
+                <h3 className="mb-1 font-bold text-primary">{director.name}</h3>
+                <p className="mb-3 text-sm uppercase tracking-wide text-accent font-semibold">{director.title}</p>
+                <a href={`mailto:${director.email}`} className="text-xs text-foreground/60 hover:text-primary transition">
+                  {director.email}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Team Section */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="container">
+          {/* Section Header */}
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-flex gap-2">
+              <div className="h-1.5 w-8 bg-accent rounded-full"></div>
+              <div className="h-1.5 w-8 bg-accent rounded-full"></div>
+            </div>
+            <h2 className="mb-4 text-4xl font-black uppercase tracking-tighter text-primary">Core Team</h2>
+          </div>
+
+          {/* Team Grid */}
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {coreTeam.map((member) => (
+              <div
+                key={member.name}
+                onClick={() => openProfile('coreTeam', member)}
+                className="group rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 text-center shadow-sm hover:shadow-lg transition cursor-pointer hover:border-accent/50"
+              >
+                <div className="mb-4 flex justify-center">
+                  <div className="h-40 w-40 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-white text-2xl font-bold group-hover:from-primary/40 group-hover:to-accent/40 transition">
+                    {member.avatar}
+                  </div>
+                </div>
+                <h3 className="mb-1 font-bold text-primary text-lg">{member.name}</h3>
+                <p className="mb-1 text-xs uppercase tracking-wide text-accent font-semibold">{member.title}</p>
+                {member.subtitle && (
+                  <p className="mb-3 text-xs text-foreground/60 uppercase tracking-wide">{member.subtitle}</p>
+                )}
+                {!member.subtitle && <div className="mb-3 h-4"></div>}
+                <a href={`mailto:${member.email}`} className="text-xs text-foreground/60 hover:text-primary transition break-all">
+                  {member.email}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-gradient-to-r from-primary via-primary/90 to-accent py-16 md:py-24">
+        <div className="container">
+          <div className="rounded-2xl border border-white/20 bg-gradient-to-b from-white/10 to-transparent backdrop-blur p-12 text-center md:p-16">
+            <h2 className="mb-4 text-3xl font-black uppercase leading-tight tracking-tighter text-white md:text-4xl">
+              Partner with Accord Power
+            </h2>
+            <p className="mb-8 mx-auto max-w-2xl text-lg text-white/90 leading-relaxed">
+              Discover how our innovative solutions can elevate your operations and deliver measurable results.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center rounded-md border border-input px-5 py-2.5 font-semibold uppercase tracking-wide text-primary transition hover:border-accent hover:text-accent"
+                className="group inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 font-bold uppercase tracking-wide text-primary shadow-lg transition-all hover:shadow-xl hover:scale-105 active:scale-95"
               >
-                Contact Us
+                Contact Our Team
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/products"
+                className="group inline-flex items-center gap-2 rounded-xl border-2 border-white px-8 py-4 font-bold uppercase tracking-wide text-white transition-all hover:bg-white/10 active:scale-95"
+              >
+                Explore Solutions
               </Link>
             </div>
           </div>
-          <div className="order-1 overflow-hidden rounded-lg border border-border shadow-sm md:order-2">
-            <img
-              src="https://accordpower.co.in/images/bg/about.jpg"
-              alt="Manufacturing and quality at Accord Power"
-              className="h-full w-full object-cover"
-            />
-          </div>
         </div>
       </section>
 
-      {/* Highlights */}
-      <section className="bg-primary/5 py-12 md:py-16">
-        <div className="container">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-lg border border-border bg-white p-6 shadow-sm">
-              <div className="mb-3 flex items-center gap-3 text-primary">
-                <Factory className="h-5 w-5" />
-                <h3 className="text-sm font-bold uppercase tracking-wide">Established</h3>
-              </div>
-              <p className="text-3xl font-extrabold text-primary">2012</p>
-              <p className="mt-1 text-sm text-foreground/70">Power supplies and chargers for RO, STB, laptops and more.</p>
-            </div>
-            <div className="rounded-lg border border-border bg-white p-6 shadow-sm">
-              <div className="mb-3 flex items-center gap-3 text-primary">
-                <Users className="h-5 w-5" />
-                <h3 className="text-sm font-bold uppercase tracking-wide">Team</h3>
-              </div>
-              <p className="text-3xl font-extrabold text-primary">200+</p>
-              <p className="mt-1 text-sm text-foreground/70">Motivated and qualified team with experienced functional heads.</p>
-            </div>
-            <div className="rounded-lg border border-border bg-white p-6 shadow-sm">
-              <div className="mb-3 flex items-center gap-3 text-primary">
-                <Award className="h-5 w-5" />
-                <h3 className="text-sm font-bold uppercase tracking-wide">Quality</h3>
-              </div>
-              <p className="text-3xl font-extrabold text-primary">State-approved</p>
-              <p className="mt-1 text-sm text-foreground/70">Facilities and systems aligned with global standards.</p>
-            </div>
-            <div className="rounded-lg border border-border bg-white p-6 shadow-sm">
-              <div className="mb-3 flex items-center gap-3 text-primary">
-                <Lightbulb className="h-5 w-5" />
-                <h3 className="text-sm font-bold uppercase tracking-wide">Leadership</h3>
-              </div>
-              <p className="text-3xl font-extrabold text-primary">20+ yrs</p>
-              <p className="mt-1 text-sm text-foreground/70">Led by Mr. A. Venkat Reddy with deep power electronics experience.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Profile Modal */}
+      <Dialog open={selectedProfile !== null} onOpenChange={closeProfile}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogTitle className="sr-only">
+            {selectedProfile?.data?.name} Profile
+          </DialogTitle>
+          {selectedProfile?.type === 'director' && (
+            <div className="relative">
+              <button
+                onClick={closeProfile}
+                className="absolute right-0 top-0 p-2 hover:bg-slate-100 rounded-lg transition"
+              >
+                <X className="h-5 w-5" />
+              </button>
 
-      {/* Philosophy & Capabilities */}
-      <section className="container py-12 md:py-20">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <h3 className="mb-3 text-xl font-bold uppercase tracking-wide text-primary">Our Philosophy</h3>
-            <p className="text-foreground/80">
-              We focus on a specialized field of Power Conversion products to meet global market needs with on-time services
-              and dependable support. Our R&D relentlessly pursues innovation, reliability, and cost-effectiveness.
-            </p>
-          </div>
-          <div>
-            <h3 className="mb-3 text-xl font-bold uppercase tracking-wide text-primary">Capabilities</h3>
-            <ul className="space-y-2 text-foreground/80">
-              <li>• RO Control Panels (AP LED, AP Aqua, AP GSM, AP 1:1/1:3/3:3)</li>
-              <li>• Digital Water Regulating Instruments</li>
-              <li>• Low/High Pressure Switches (LPS/HPS)</li>
-              <li>• Digital Flow Meter for Commercial/Industrial RO Plants</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+              <div className="pt-4">
+                <div className="flex flex-col items-center mb-6">
+                  <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center text-white text-5xl font-bold mb-4">
+                    {selectedProfile.data.avatar || selectedProfile.data.name.substring(0, 2).toUpperCase()}
+                  </div>
+                  <h2 className="text-3xl font-bold text-primary mb-2">{selectedProfile.data.name}</h2>
+                  <p className="text-lg font-semibold text-accent uppercase tracking-wide mb-4">{selectedProfile.data.title}</p>
+                  <a href={`mailto:${selectedProfile.data.email}`} className="text-primary hover:text-accent transition font-medium">
+                    {selectedProfile.data.email}
+                  </a>
+                </div>
+
+                {selectedProfile.data.name === featuredDirector.name && (
+                  <div className="space-y-4">
+                    <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6 border border-primary/10">
+                      <h3 className="font-bold text-primary mb-3 uppercase tracking-wide">Biography</h3>
+                      <p className="text-foreground/80 leading-relaxed">
+                        {featuredDirector.bio}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {selectedProfile.data.name !== featuredDirector.name && (
+                  <div className="space-y-4">
+                    <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6 border border-primary/10">
+                      <h3 className="font-bold text-primary mb-3 uppercase tracking-wide">Role & Responsibilities</h3>
+                      <p className="text-foreground/80 leading-relaxed">
+                        {selectedProfile.data.title} at Accord Power. Dedicated professional with expertise in their respective domain, contributing to the company's growth and success.
+                      </p>
+                    </div>
+                    {selectedProfile.data.subtitle && (
+                      <div className="bg-gradient-to-br from-accent/5 to-primary/5 rounded-xl p-6 border border-accent/10">
+                        <h3 className="font-bold text-accent mb-3 uppercase tracking-wide">Specialization</h3>
+                        <p className="text-foreground/80 leading-relaxed">
+                          {selectedProfile.data.subtitle}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {selectedProfile?.type === 'coreTeam' && (
+            <div className="relative">
+              <button
+                onClick={closeProfile}
+                className="absolute right-0 top-0 p-2 hover:bg-slate-100 rounded-lg transition"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="pt-4">
+                <div className="flex flex-col items-center mb-6">
+                  <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-white text-5xl font-bold mb-4">
+                    {selectedProfile.data.avatar}
+                  </div>
+                  <h2 className="text-3xl font-bold text-primary mb-2">{selectedProfile.data.name}</h2>
+                  <p className="text-lg font-semibold text-accent uppercase tracking-wide mb-4">{selectedProfile.data.title}</p>
+                  {selectedProfile.data.subtitle && (
+                    <p className="text-sm text-foreground/70 uppercase tracking-wide mb-4">{selectedProfile.data.subtitle}</p>
+                  )}
+                  <a href={`mailto:${selectedProfile.data.email}`} className="text-primary hover:text-accent transition font-medium">
+                    {selectedProfile.data.email}
+                  </a>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-6 border border-primary/10">
+                    <h3 className="font-bold text-primary mb-3 uppercase tracking-wide">Role & Responsibilities</h3>
+                    <p className="text-foreground/80 leading-relaxed">
+                      {selectedProfile.data.title} at Accord Power. Dedicated professional with expertise in their respective domain, contributing to the company's growth and success.
+                    </p>
+                  </div>
+                  {selectedProfile.data.subtitle && (
+                    <div className="bg-gradient-to-br from-accent/5 to-primary/5 rounded-xl p-6 border border-accent/10">
+                      <h3 className="font-bold text-accent mb-3 uppercase tracking-wide">Specialization</h3>
+                      <p className="text-foreground/80 leading-relaxed">
+                        {selectedProfile.data.subtitle}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
