@@ -4,6 +4,8 @@ import cors from "cors";
 
 import contactRouter from "./routes/contact";
 import productEnquiryRouter from "./routes/productEnquiry";
+import customerLocations from "./routes/customerLocations";
+
 
 export function createServer() {
   console.log("🟣 createServer(): creating Express app");
@@ -14,8 +16,10 @@ export function createServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  app.use("/api/contact", contactRouter);
-  app.use("/api/product-enquiry", productEnquiryRouter);
+  app.use("/contact", contactRouter);
+  app.use("/product-enquiry", productEnquiryRouter);
+  app.use("/customer-locations", customerLocations);
+
 
   app.get("/api/health", (_req, res) => {
     res.json({ status: "ok" });

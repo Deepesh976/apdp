@@ -24,6 +24,7 @@
   "dependencies": {
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "leaflet": "^1.9.4",
     "mongoose": "^8.20.2",
     "pdf-lib": "^1.17.1",
     "zod": "^3.25.76"

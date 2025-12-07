@@ -1,3 +1,6 @@
+import "leaflet/dist/leaflet.css";
+  
+
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
