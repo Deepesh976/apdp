@@ -48,8 +48,8 @@ export default function Products() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filtered.map((p) => (
               <article key={p.slug} className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm transition hover:shadow-md">
-                <Link to={`/products/${p.slug}`} className="aspect-[4/3] overflow-hidden">
-                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                <Link to={`/products/${p.slug}`} className="aspect-[4/3] overflow-hidden bg-muted/20 flex items-center justify-center">
+                  <img src={p.image} alt={p.title} className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105" />
                 </Link>
                 <div className="flex flex-1 flex-col p-4">
                   <div className="mb-2 flex items-center justify-between">

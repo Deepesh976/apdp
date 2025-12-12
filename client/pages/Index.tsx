@@ -9,10 +9,11 @@ import L, { LatLngExpression, Map as LeafletMap } from "leaflet";
 // import "leaflet/dist/leaflet.css";
 
 const heroSlides = [
-  "https://accordpower.co.in/images/header-slide/slide-1.jpg",
-  "https://accordpower.co.in/images/header-slide/slide-2.jpg",
-  "https://accordpower.co.in/images/header-slide/slide-3.jpg",
-  "https://accordpower.co.in/images/header-slide/slide-4.jpg",
+  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F9af1e8eba2ec47fa880a85a00a13cf5f?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fb67b87af3d6245ed9fdaaf1cd5530594?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fe9cc8240fe4d479f87ef95618f8e13b8?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F12c1d09ef34d4fe5852dcb37b135fc20?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fca88b3b45e374b81be72b4ff69ab19ed?format=webp&width=1920",
 ];
 
 const features = [
@@ -76,7 +77,7 @@ const indiaStateCenters: { name: string; lat: number; lng: number }[] = [
 // 🔹 Modern custom marker icon with gradient background
 const createModernMarker = (color: string = "#176fb7") => {
   const svgString = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" width="40" height="48">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" width="24" height="29">
       <defs>
         <linearGradient id="markerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" style="stop-color:${color};stop-opacity:1" />
@@ -95,9 +96,9 @@ const createModernMarker = (color: string = "#176fb7") => {
   const encodedSvg = encodeURIComponent(svgString);
   return L.icon({
     iconUrl: `data:image/svg+xml;charset=UTF-8,${encodedSvg}`,
-    iconSize: [40, 48],
-    iconAnchor: [20, 48],
-    popupAnchor: [0, -48],
+    iconSize: [24, 29],
+    iconAnchor: [12, 29],
+    popupAnchor: [0, -29],
     shadowSize: [0, 0],
   });
 };
@@ -243,7 +244,9 @@ export default function Index() {
                   <img
                     src={src}
                     alt="Accord Power banner"
-                    className="block h-auto w-full max-h-[90vh] object-cover"
+                    className="block w-full h-auto object-cover object-center"
+                    decoding="async"
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -299,31 +302,40 @@ export default function Index() {
       {/* About Us & Statistics Section */}
       <section className="bg-gradient-to-b from-white to-slate-50 py-16 md:py-28">
         <div className="container">
-          {/* About Us Content */}
-          <div className="mb-16 max-w-3xl">
-            <div className="mb-2 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-accent">
-              About Us
+          {/* About Us Content with Image */}
+          <div className="mb-16 grid gap-12 items-center md:grid-cols-2">
+            <div>
+              <div className="mb-2 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-semibold uppercase tracking-wide text-accent">
+                About Us
+              </div>
+              <h2 className="mb-6 text-4xl font-black uppercase leading-tight tracking-tight text-primary md:text-5xl">
+                A House Of Power Solutions
+              </h2>
+              <p className="mb-4 text-lg text-foreground/80 leading-relaxed">
+                Accord Power Conversion Pvt. Ltd established in 2012. Specializes in manufacturing Electric Vehicle Chargers
+                for 2-wheelers, 3-wheelers, and 4-wheelers, along with a diverse range of Power Supplies, Chargers, and Water
+                Purifier Controllers. Set-Top-Boxes, Laptops, Office automation, and more.
+              </p>
+              <p className="text-lg text-foreground/80 leading-relaxed">
+                Accord's products have received strong market acceptance, serving diverse sectors such as Electric Vehicles,
+                Telecom, Water Purification, Set-Top Boxes, Laptops, and Industrial sectors. Accord Power is established as a
+                trusted and reliable name in the power supply and EV charger manufacturing industry.
+              </p>
+              <Link
+                to="/about"
+                className="group mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-bold uppercase tracking-wide text-white transition-all hover:bg-primary/90 hover:shadow-lg active:scale-95"
+              >
+                Read More
+                <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
-            <h2 className="mb-6 text-4xl font-black uppercase leading-tight tracking-tight text-primary md:text-5xl">
-              A House Of Power Solutions
-            </h2>
-            <p className="mb-4 text-lg text-foreground/80 leading-relaxed">
-              Accord Power Conversion Pvt. Ltd established in 2012. Specializes in manufacturing Electric Vehicle Chargers
-              for 2-wheelers, 3-wheelers, and 4-wheelers, along with a diverse range of Power Supplies, Chargers, and Water
-              Purifier Controllers. Set-Top-Boxes, Laptops, Office automation, and more.
-            </p>
-            <p className="text-lg text-foreground/80 leading-relaxed">
-              Accord's products have received strong market acceptance, serving diverse sectors such as Electric Vehicles,
-              Telecom, Water Purification, Set-Top Boxes, Laptops, and Industrial sectors. Accord Power is established as a
-              trusted and reliable name in the power supply and EV charger manufacturing industry.
-            </p>
-            <Link
-              to="/about"
-              className="group mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-bold uppercase tracking-wide text-white transition-all hover:bg-primary/90 hover:shadow-lg active:scale-95"
-            >
-              Read More
-              <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            <div className="flex justify-center">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fc1c7776ed8eb4fcfa729fb49dd7ac81c?format=webp&width=1920"
+                alt="Accord Power Digital Products"
+                className="w-full max-w-md h-auto"
+              />
+            </div>
           </div>
 
           {/* Statistics Section */}

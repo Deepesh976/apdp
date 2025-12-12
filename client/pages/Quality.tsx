@@ -1,30 +1,41 @@
-import { Award, Download, FileText } from "lucide-react";
+import { Award, FileText, X } from "lucide-react";
+import { useState } from "react";
 
 export default function Quality() {
+  const [selectedCertificate, setSelectedCertificate] = useState<any>(null);
+
   const certificates = [
     {
       id: 1,
-      name: "ISO 9001:2015",
-      description: "Quality Management System certification ensuring consistent product and service quality across all operations",
-      icon: Award,
-      color: "primary",
-      downloadUrl: "#", // Add actual PDF URL here
+      name: "Accord CE Certificate",
+      description: "AC-DC SMPS Based Charger - Compliance with European safety and health requirements for our products and manufacturing standards.",
+      images: [
+        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fbbc93858493b4b02b9468b1d7e0a9941?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F5fe1fc70c5ff48959503a03edce4fc0e?format=webp&width=800",
+      ],
+      viewUrl: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fbbc93858493b4b02b9468b1d7e0a9941?format=webp&width=800",
+      color: "accent",
     },
     {
       id: 2,
-      name: "CE Certification",
-      description: "Compliance with European safety and health requirements for our products and manufacturing standards",
-      icon: FileText,
-      color: "accent",
-      downloadUrl: "#", // Add actual PDF URL here
+      name: "ISO 9001:2015 Certificate",
+      description: "Management system certification ensuring consistent product and service quality across all operations.",
+      images: [
+        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fe0a5b1011e0c4da6b1d7eb2b7eb43c6c?format=webp&width=800",
+      ],
+      viewUrl: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fe0a5b1011e0c4da6b1d7eb2b7eb43c6c?format=webp&width=800",
+      color: "primary",
     },
     {
       id: 3,
-      name: "RoHS Compliance",
-      description: "Restriction of Hazardous Substances compliance for environmental safety and sustainability",
-      icon: Award,
-      color: "primary",
-      downloadUrl: "#", // Add actual PDF URL here
+      name: "RoHS Compliance Certificate",
+      description: "Restriction of Hazardous Substances compliance for environmental safety and sustainability of our products.",
+      images: [
+        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Ff2fc7d47c2fe4ba9afb50c370c22f019?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F00e3a1e2a0ce4cf1998f76f460e32bb7?format=webp&width=800",
+      ],
+      viewUrl: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Ff2fc7d47c2fe4ba9afb50c370c22f019?format=webp&width=800",
+      color: "accent",
     },
   ];
 
@@ -49,19 +60,31 @@ export default function Quality() {
       {/* Description Section */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 md:p-12">
-              <h2 className="text-3xl font-black uppercase tracking-tighter text-primary mb-6">Our Commitment to Quality</h2>
-              <div className="space-y-4 text-foreground/80 leading-relaxed">
-                <p>
-                  At Accord Power, quality is not just a promise—it's a fundamental principle that guides every aspect of our business. From raw material procurement to final product delivery, we maintain rigorous standards and systematic quality control processes.
-                </p>
-                <p>
-                  Our state-of-the-art manufacturing facilities are equipped with advanced testing and inspection equipment to ensure that every product meets or exceeds international quality standards. We invest continuously in technology, training, and processes to maintain the highest levels of excellence.
-                </p>
-                <p>
-                  We hold multiple international certifications and comply with all relevant industry regulations, demonstrating our unwavering commitment to delivering reliable, safe, and high-performance products to our valued customers worldwide.
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Image on the Left */}
+            <div className="flex justify-center">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F72e6538ac5394874a8d09579db144341?format=webp&width=800"
+                alt="Quality Commitment"
+                className="w-full max-w-sm h-auto object-contain"
+              />
+            </div>
+
+            {/* Content on the Right */}
+            <div>
+              <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 md:p-12">
+                <h2 className="text-3xl font-black uppercase tracking-tighter text-primary mb-6">Our Commitment to Quality</h2>
+                <div className="space-y-4 text-foreground/80 leading-relaxed">
+                  <p>
+                    At Accord Power, quality is not just a promise—it's a fundamental principle that guides every aspect of our business. From raw material procurement to final product delivery, we maintain rigorous standards and systematic quality control processes.
+                  </p>
+                  <p>
+                    Our state-of-the-art manufacturing facilities are equipped with advanced testing and inspection equipment to ensure that every product meets or exceeds international quality standards. We invest continuously in technology, training, and processes to maintain the highest levels of excellence.
+                  </p>
+                  <p>
+                    We hold multiple international certifications and comply with all relevant industry regulations, demonstrating our unwavering commitment to delivering reliable, safe, and high-performance products to our valued customers worldwide.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -89,34 +112,45 @@ export default function Quality() {
                 className="group rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:border-accent/50"
               >
                 {/* Certificate Header */}
-                <div className={`bg-gradient-to-r ${cert.color === 'primary' ? 'from-primary/10 to-primary/5' : 'from-accent/10 to-accent/5'} px-8 py-8`}>
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-white shadow-md group-hover:shadow-lg transition">
-                    <Award className={`h-8 w-8 ${cert.color === 'primary' ? 'text-primary' : 'text-accent'}`} />
+                <div className={`bg-gradient-to-r ${cert.color === 'primary' ? 'from-primary/10 to-primary/5' : 'from-accent/10 to-accent/5'} px-6 py-6`}>
+                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-md group-hover:shadow-lg transition">
+                    <FileText className={`h-6 w-6 ${cert.color === 'primary' ? 'text-primary' : 'text-accent'}`} />
                   </div>
-                  <h3 className={`text-2xl font-black uppercase tracking-tight ${cert.color === 'primary' ? 'text-primary' : 'text-accent'}`}>
+                  <h3 className={`text-lg font-black uppercase tracking-tight ${cert.color === 'primary' ? 'text-primary' : 'text-accent'} line-clamp-2`}>
                     {cert.name}
                   </h3>
                 </div>
 
-                {/* Certificate Body */}
-                <div className="p-8">
-                  <p className="text-foreground/70 leading-relaxed mb-8">
+                {/* Certificate Image with Hover Overlay */}
+                <div className="p-4 border-t border-slate-200 flex justify-center">
+                  <div className="relative rounded-xl overflow-hidden border border-slate-200 group/image max-w-xs w-full">
+                    <img
+                      src={cert.images[0]}
+                      alt={`${cert.name} - Preview`}
+                      className="w-full h-auto object-cover"
+                    />
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300">
+                      <button
+                        onClick={() => setSelectedCertificate(cert)}
+                        className={`inline-flex items-center gap-2 rounded-xl font-bold uppercase tracking-wide px-6 py-3 text-white transition-all ${
+                          cert.color === 'primary'
+                            ? 'bg-primary hover:bg-primary/90'
+                            : 'bg-accent hover:bg-accent/90'
+                        }`}
+                      >
+                        <FileText className="h-5 w-5" />
+                        View Certificate
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Certificate Description */}
+                <div className="p-4 border-t border-slate-200">
+                  <p className="text-foreground/70 leading-relaxed text-sm line-clamp-3">
                     {cert.description}
                   </p>
-
-                  {/* Download Button */}
-                  <a
-                    href={cert.downloadUrl}
-                    download
-                    className={`inline-flex items-center gap-2 rounded-xl font-bold uppercase tracking-wide px-6 py-3 transition-all duration-300 ${
-                      cert.color === 'primary'
-                        ? 'bg-primary text-white hover:bg-primary/90 hover:shadow-lg'
-                        : 'bg-accent text-white hover:bg-accent/90 hover:shadow-lg'
-                    }`}
-                  >
-                    <Download className="h-5 w-5" />
-                    Download Certificate
-                  </a>
                 </div>
               </div>
             ))}
@@ -124,48 +158,39 @@ export default function Quality() {
         </div>
       </section>
 
-      {/* Quality Assurance Info */}
-      <section className="py-20 md:py-32 bg-white">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="mb-4 inline-flex gap-2">
-                <div className="h-1.5 w-8 bg-accent rounded-full"></div>
-                <div className="h-1.5 w-8 bg-accent rounded-full"></div>
-              </div>
-              <h2 className="text-4xl font-black uppercase tracking-tighter text-primary mb-6">Quality Assurance Process</h2>
-              <div className="space-y-4 text-foreground/80 leading-relaxed mb-8">
-                <p>
-                  Every product undergoes rigorous testing and quality control procedures to ensure it meets our high standards before reaching our customers.
-                </p>
-                <p>
-                  Our comprehensive QA process includes component testing, performance validation, environmental stress testing, and safety verification at every stage.
-                </p>
-              </div>
-              <ul className="space-y-3">
-                {[
-                  "Comprehensive component testing",
-                  "Performance validation under various conditions",
-                  "Environmental stress testing",
-                  "Safety and compliance verification",
-                  "Final inspection and packaging quality",
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <div className="h-2 w-2 rounded-full bg-accent flex-shrink-0 mt-2"></div>
-                    <span className="text-foreground/80">{item}</span>
-                  </li>
+      {/* Certificate Modal */}
+      {selectedCertificate && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedCertificate(null)}
+              className="sticky top-4 right-4 float-right z-10 flex items-center justify-center h-10 w-10 rounded-lg bg-slate-100 hover:bg-slate-200 transition"
+            >
+              <X className="h-6 w-6 text-foreground" />
+            </button>
+
+            {/* Certificate Content */}
+            <div className="p-6">
+              <h2 className="text-xl font-bold text-primary mb-6">{selectedCertificate.name}</h2>
+
+              {/* Certificate Pages */}
+              <div className="space-y-6">
+                {selectedCertificate.images.map((image: string, idx: number) => (
+                  <div key={idx} className="flex flex-col items-center">
+                    <p className="text-sm text-foreground/60 mb-3 font-semibold uppercase tracking-wide">Page {idx + 1}</p>
+                    <img
+                      src={image}
+                      alt={`${selectedCertificate.name} - Page ${idx + 1}`}
+                      className="w-full h-auto object-contain rounded-lg border border-slate-300 shadow-sm"
+                    />
+                  </div>
                 ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 p-12 flex items-center justify-center min-h-96">
-              <div className="text-center">
-                <Award className="h-24 w-24 text-primary/40 mx-auto mb-6" />
-                <p className="text-lg font-semibold text-primary/60">International Quality Standards</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      )}
     </div>
   );
 }

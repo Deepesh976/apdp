@@ -272,7 +272,7 @@ export default function ProductDetail() {
                     {isGenerating ? "Preparing PDF..." : "Download Product PDF"}
                   </button>
 
-                  {product.brochureUrl && (
+                  {product.brochureUrl && product.category !== "Accessories" && (
                     <button
                       type="button"
                       onClick={handleBrochureClick}

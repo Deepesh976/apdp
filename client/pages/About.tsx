@@ -101,75 +101,66 @@ const milestones = [
 ];
 
 const featuredDirector = {
-  name: "Mr. Adit Venkat Reddy",
+  name: "MR. Adla Venkat Reddy",
   title: "Managing Director",
-  email: "adit@accordpower.in",
-  bio: "Mr. Adit venkat Reddy boasts an impressive 30-year tenure in the manufacturing sector. Drawing from his extensive experience and firm understanding of the industry, he took the bold step to establish his own venture in 2012. Since then, Accord has blossomed under his visionary leadership, transforming from a nascent startup into an entrepreneurial powerhouse. Mr. Reddy excels in positioning Accord Power Group's Power Conversion as a beacon of inspiration for aspiring business leaders worldwide.",
+  email: "venkatreddy@accordpower.in",
+  image: "https://cdn.builder.io/api/v1/image/assets%2Fa66adcbac1bb4c45a49f85c01e8b6cac%2Fbb98cb5564b54c40b6977b07f8b5e1a2?format=webp&width=800",
+  bio: "Mr. Adla Venkat Reddy boasts an impressive 30-year tenure in the manufacturing sector. Drawing from his extensive experience and firm understanding of the industry, he took the bold step to establish his own venture in 2012. Since then, Accord has blossomed under his visionary leadership, transforming from a nascent startup into an entrepreneurial powerhouse. Mr. Reddy excels in positioning Accord Power Group's Power Conversion as a beacon of inspiration for aspiring business leaders worldwide.",
 };
 
 const directors = [
   {
-    name: "Sompath Reddy",
+    name: "Sampath Reddy",
     title: "Technical Director",
-    email: "sompath@accordpower.in",
+    email: "sampath@accordpower.in",
     avatar: "SR",
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fa66adcbac1bb4c45a49f85c01e8b6cac%2Fa8923a2db39f48f69d365eeaded5da93?format=webp&width=800",
   },
   {
-    name: "Sridher Reddy",
-    title: "Operations Director",
-    email: "sridher@accordpower.in",
-    avatar: "SHR",
-  },
-  {
-    name: "Gaurov Saini",
+    name: "Gaurav Saini",
     title: "Managing Partner",
-    email: "gaurov@accordpower.in",
+    email: "gaurav@accordpower.in",
     avatar: "GS",
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fa66adcbac1bb4c45a49f85c01e8b6cac%2F2b0ede6a28f7435091fdce8315da9d7a?format=webp&width=800",
   },
   {
-    name: "Sheela Saini",
+    name: "Ritu Saini",
     title: "Director",
-    email: "sheela@accordpower.in",
-    avatar: "SS",
+    email: "ritu@accordpower.in",
+    avatar: "RS",
   },
 ];
 
 const coreTeam = [
   {
-    name: "Sandeep Kilori",
-    title: "ODF Head & Marketing",
-    email: "sandeep@accordpower.in",
-    avatar: "SK",
-  },
-  {
     name: "Ch. Ramesh",
-    title: "CTO/VP",
+    title: "GM-VD",
     email: "ramesh@accordpower.in",
+    phone: "+91 9963800655",
     avatar: "CR",
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fa66adcbac1bb4c45a49f85c01e8b6cac%2F5357034d867143b299d1f65b94efb8c3?format=webp&width=800",
   },
   {
     name: "Ch. Nagini",
     title: "Corporate HR",
-    email: "nagini@accordpower.in",
+    email: "hr@accordpower.in",
+    phone: "+91 9963800455",
     avatar: "CN",
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fa66adcbac1bb4c45a49f85c01e8b6cac%2F333a2f773f7a4335a5c0684dac261e8a?format=webp&width=800",
   },
   {
     name: "N. Nageshwer Rao",
     title: "CFO",
     email: "nageshwer@accordpower.in",
     avatar: "NNR",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F28fb3c472d154849b1e3edff87b25095?format=webp&width=800",
   },
   {
-    name: "J. Shleep",
+    name: "J. Dhileep",
     title: "Finance & Accounts",
-    email: "shleep@accordpower.in",
-    avatar: "JS",
-  },
-  {
-    name: "S. Ujwal Kumar Reddy",
-    title: "Management Representative",
-    email: "ujwal@accordpower.in",
-    avatar: "UKR",
+    email: "dhileep@accordpower.in",
+    avatar: "JD",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F1b4d9b049cf84c238910c089446e6040?format=webp&width=800",
   },
   {
     name: "Prasanth Lenke",
@@ -178,30 +169,18 @@ const coreTeam = [
     avatar: "PL",
   },
   {
-    name: "A. Srikarith Reddy",
-    title: "M&E M/C Control Panel",
-    email: "srikarith@accordpower.in",
+    name: "A. Srikanth Reddy",
+    title: "MR & MO (Control Panel ATW Factory)",
+    email: "srikanth@accordpower.in",
     avatar: "SR",
-  },
-  {
-    name: "A. Vijay Bhaskar Reddy",
-    title: "Manager Operation",
-    subtitle: "SMPS & Power Sources",
-    email: "vijay@accordpower.in",
-    avatar: "VBR",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F0ddb17f77a2c4f8c9dcbd8fd899273da?format=webp&width=800",
   },
   {
     name: "K. Muralidhar Rao",
     title: "Manager - Service",
     email: "muralidhar@accordpower.in",
     avatar: "MR",
-  },
-  {
-    name: "L. Prathap Raju",
-    title: "Manager Operation",
-    subtitle: "RCC Charger Factory",
-    email: "prathap@accordpower.in",
-    avatar: "PR",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F8e8c3244c8dd4880a74b4829dc39dc12?format=webp&width=800",
   },
 ];
 
@@ -499,8 +478,16 @@ export default function About() {
           >
             <div className="grid items-center gap-8 md:grid-cols-2">
               <div className="flex items-center justify-center">
-                <div className="relative h-64 w-64 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 overflow-hidden flex items-center justify-center group-hover:from-accent/30 group-hover:to-primary/30 transition">
-                  <div className="text-6xl font-bold text-accent">AVR</div>
+                <div className="relative h-64 w-64 rounded-full bg-white overflow-hidden flex items-center justify-center transition">
+                  {featuredDirector.image ? (
+                    <img
+                      src={featuredDirector.image}
+                      alt={featuredDirector.name}
+                      className="h-full w-full object-cover object-center"
+                    />
+                  ) : (
+                    <div className="text-6xl font-bold text-accent">AVR</div>
+                  )}
                 </div>
               </div>
               <div>
@@ -517,21 +504,31 @@ export default function About() {
           </div>
 
           {/* Other Directors */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {directors.map((director) => (
               <div
                 key={director.name}
                 onClick={() => openProfile('director', director)}
-                className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm hover:shadow-lg transition cursor-pointer hover:border-accent/50"
+                className="group rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm hover:shadow-lg transition cursor-pointer hover:border-accent/50"
               >
-                <div className="mb-4 flex justify-center">
-                  <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center text-white text-3xl font-bold group-hover:from-primary/50 group-hover:to-accent/50 transition">
-                    {director.avatar}
+                <div className="mb-6 flex justify-center">
+                  <div className="h-40 w-40 rounded-full bg-white overflow-hidden flex items-center justify-center text-white text-4xl font-bold transition">
+                    {director.image ? (
+                      <img
+                        src={director.image}
+                        alt={director.name}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center group-hover:from-primary/50 group-hover:to-accent/50">
+                        {director.avatar}
+                      </div>
+                    )}
                   </div>
                 </div>
-                <h3 className="mb-1 font-bold text-primary">{director.name}</h3>
+                <h3 className="mb-2 font-bold text-primary text-lg">{director.name}</h3>
                 <p className="mb-3 text-sm uppercase tracking-wide text-accent font-semibold">{director.title}</p>
-                <a href={`mailto:${director.email}`} className="text-xs text-foreground/60 hover:text-primary transition">
+                <a href={`mailto:${director.email}`} className="text-sm text-foreground/60 hover:text-primary transition">
                   {director.email}
                 </a>
               </div>
@@ -561,19 +558,42 @@ export default function About() {
                 className="group rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 text-center shadow-sm hover:shadow-lg transition cursor-pointer hover:border-accent/50"
               >
                 <div className="mb-4 flex justify-center">
-                  <div className="h-40 w-40 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-white text-2xl font-bold group-hover:from-primary/40 group-hover:to-accent/40 transition">
-                    {member.avatar}
+                  <div className="h-40 w-40 rounded-full bg-white overflow-hidden flex items-center justify-center text-white text-2xl font-bold transition">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center group-hover:from-primary/40 group-hover:to-accent/40">
+                        {member.avatar}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <h3 className="mb-1 font-bold text-primary text-lg">{member.name}</h3>
                 <p className="mb-1 text-xs uppercase tracking-wide text-accent font-semibold">{member.title}</p>
-                {member.subtitle && (
+                {(member.name === "Ch. Ramesh" || member.name === "Ch. Nagini") && member.phone && (
+                  <p className="mb-3 text-xs text-foreground/60">{member.phone}</p>
+                )}
+                {member.subtitle && !["Ch. Ramesh", "Ch. Nagini"].includes(member.name) && (
                   <p className="mb-3 text-xs text-foreground/60 uppercase tracking-wide">{member.subtitle}</p>
                 )}
-                {!member.subtitle && <div className="mb-3 h-4"></div>}
-                <a href={`mailto:${member.email}`} className="text-xs text-foreground/60 hover:text-primary transition break-all">
-                  {member.email}
-                </a>
+                {!member.subtitle && !["Ch. Ramesh", "Ch. Nagini"].includes(member.name) && <div className="mb-3 h-4"></div>}
+                {member.name === "N. Nageshwer Rao" && member.phone && (
+                  <a href={`tel:${member.phone}`} className="text-xs text-foreground/60 hover:text-primary transition break-all">
+                    {member.phone}
+                  </a>
+                )}
+                {member.name === "J. Dhileep" && (
+                  <p className="text-xs text-foreground/60">Finance & Accounts</p>
+                )}
+                {!["N. Nageshwer Rao", "J. Dhileep", "Prasanth Lenke", "A. Srikanth Reddy", "K. Muralidhar Rao"].includes(member.name) && (
+                  <a href={`mailto:${member.email}`} className="text-xs text-foreground/60 hover:text-primary transition break-all">
+                    {member.email}
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -626,8 +646,18 @@ export default function About() {
 
               <div className="pt-4">
                 <div className="flex flex-col items-center mb-6">
-                  <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center text-white text-5xl font-bold mb-4">
-                    {selectedProfile.data.avatar || selectedProfile.data.name.substring(0, 2).toUpperCase()}
+                  <div className="h-32 w-32 rounded-full bg-white flex items-center justify-center text-white text-5xl font-bold mb-4 overflow-hidden">
+                    {selectedProfile.data.image ? (
+                      <img
+                        src={selectedProfile.data.image}
+                        alt={selectedProfile.data.name}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center">
+                        {selectedProfile.data.avatar || selectedProfile.data.name.substring(0, 2).toUpperCase()}
+                      </div>
+                    )}
                   </div>
                   <h2 className="text-3xl font-bold text-primary mb-2">{selectedProfile.data.name}</h2>
                   <p className="text-lg font-semibold text-accent uppercase tracking-wide mb-4">{selectedProfile.data.title}</p>
@@ -680,17 +710,37 @@ export default function About() {
 
               <div className="pt-4">
                 <div className="flex flex-col items-center mb-6">
-                  <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-white text-5xl font-bold mb-4">
-                    {selectedProfile.data.avatar}
+                  <div className="h-32 w-32 rounded-full bg-white flex items-center justify-center text-white text-5xl font-bold mb-4 overflow-hidden">
+                    {selectedProfile.data.image ? (
+                      <img
+                        src={selectedProfile.data.image}
+                        alt={selectedProfile.data.name}
+                        className="h-full w-full object-cover object-center"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center">
+                        {selectedProfile.data.avatar}
+                      </div>
+                    )}
                   </div>
                   <h2 className="text-3xl font-bold text-primary mb-2">{selectedProfile.data.name}</h2>
                   <p className="text-lg font-semibold text-accent uppercase tracking-wide mb-4">{selectedProfile.data.title}</p>
-                  {selectedProfile.data.subtitle && (
+                  {(selectedProfile.data.name === "Ch. Ramesh" || selectedProfile.data.name === "Ch. Nagini") && selectedProfile.data.phone && (
+                    <p className="text-lg text-foreground/70 mb-4">{selectedProfile.data.phone}</p>
+                  )}
+                  {selectedProfile.data.subtitle && !["Ch. Ramesh", "Ch. Nagini"].includes(selectedProfile.data.name) && (
                     <p className="text-sm text-foreground/70 uppercase tracking-wide mb-4">{selectedProfile.data.subtitle}</p>
                   )}
-                  <a href={`mailto:${selectedProfile.data.email}`} className="text-primary hover:text-accent transition font-medium">
-                    {selectedProfile.data.email}
-                  </a>
+                  {selectedProfile.data.name === "N. Nageshwer Rao" && selectedProfile.data.phone && (
+                    <a href={`tel:${selectedProfile.data.phone}`} className="text-primary hover:text-accent transition font-medium">
+                      {selectedProfile.data.phone}
+                    </a>
+                  )}
+                  {!["N. Nageshwer Rao", "J. Dhileep", "Prasanth Lenke", "A. Srikanth Reddy", "K. Muralidhar Rao"].includes(selectedProfile.data.name) && (
+                    <a href={`mailto:${selectedProfile.data.email}`} className="text-primary hover:text-accent transition font-medium">
+                      {selectedProfile.data.email}
+                    </a>
+                  )}
                 </div>
 
                 <div className="space-y-4">

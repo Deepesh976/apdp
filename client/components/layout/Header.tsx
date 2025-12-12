@@ -37,9 +37,9 @@ export default function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="https://accordpower.co.in/images/logo.png"
+            src="https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fcc93343754f34ea2981cbfa95d0eea93?format=webp&width=800"
             alt="Accord Power"
-            className="h-12 w-auto"
+            className="h-16 w-auto"
           />
         </Link>
         <nav className="hidden md:flex items-center gap-1">
