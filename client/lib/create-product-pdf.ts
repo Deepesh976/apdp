@@ -509,6 +509,31 @@ export const createProductPdf = async (product: Product) => {
     drawSpecs(context, { regular: regularFont, bold: boldFont }, product.specs);
   }
 
+  if (product.gallery?.length) {
+    drawSectionTitle(context, boldFont, "Gallery");
+
+    for (const galleryImageUrl of product.gallery) {
+      const galleryImage = await loadProductImage(pdfDoc, galleryImageUrl);
+
+      if (galleryImage) {
+        const maxImageWidth = context.page.getSize().width - PAGE_MARGIN * 2;
+        const maxImageHeight = 250;
+        const fitted = galleryImage.scaleToFit(maxImageWidth, maxImageHeight);
+
+        ensureSpace(context, fitted.height + 20);
+
+        context.page.drawImage(galleryImage, {
+          x: PAGE_MARGIN,
+          y: context.y - fitted.height,
+          width: fitted.width,
+          height: fitted.height,
+        });
+
+        context.setY(context.y - fitted.height - 16);
+      }
+    }
+  }
+
   const pdfBytes = await pdfDoc.save();
   const arrayBuffer = pdfBytes.buffer.slice(pdfBytes.byteOffset, pdfBytes.byteOffset + pdfBytes.byteLength) as ArrayBuffer;
   const blob = new Blob([arrayBuffer], { type: "application/pdf" });

@@ -1,41 +1,39 @@
-import { Award, FileText, X } from "lucide-react";
-import { useState } from "react";
+import { Award, FileText } from "lucide-react";
+import CertificateCard from "@/components/CertificateCard";
 
 export default function Quality() {
-  const [selectedCertificate, setSelectedCertificate] = useState<any>(null);
-
   const certificates = [
     {
       id: 1,
-      name: "Accord CE Certificate",
-      description: "AC-DC SMPS Based Charger - Compliance with European safety and health requirements for our products and manufacturing standards.",
+      name: "ISO 9001:2015",
+      description: "Quality Management System certification ensuring consistent product and service quality across all operations",
+      icon: Award,
+      color: "primary" as const,
       images: [
-        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fbbc93858493b4b02b9468b1d7e0a9941?format=webp&width=800",
-        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F5fe1fc70c5ff48959503a03edce4fc0e?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2Fb796bbaf4f9e4df49c0919506476eef0%2F3f532e6e98ef40d49b9c9be718120590?format=webp&width=800",
       ],
-      viewUrl: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fbbc93858493b4b02b9468b1d7e0a9941?format=webp&width=800",
-      color: "accent",
     },
     {
       id: 2,
-      name: "ISO 9001:2015 Certificate",
-      description: "Management system certification ensuring consistent product and service quality across all operations.",
+      name: "CE Certification",
+      description: "Compliance with European safety and health requirements for our products and manufacturing standards",
+      icon: FileText,
+      color: "accent" as const,
       images: [
-        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fe0a5b1011e0c4da6b1d7eb2b7eb43c6c?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2Fb796bbaf4f9e4df49c0919506476eef0%2F25abae0d94be4a0cb159a23f91de85f1?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2Fb796bbaf4f9e4df49c0919506476eef0%2F9f9de6f7bd644339b59dbd1dd0140e01?format=webp&width=800",
       ],
-      viewUrl: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Fe0a5b1011e0c4da6b1d7eb2b7eb43c6c?format=webp&width=800",
-      color: "primary",
     },
     {
       id: 3,
-      name: "RoHS Compliance Certificate",
-      description: "Restriction of Hazardous Substances compliance for environmental safety and sustainability of our products.",
+      name: "RoHS Compliance",
+      description: "Restriction of Hazardous Substances compliance for environmental safety and sustainability",
+      icon: Award,
+      color: "primary" as const,
       images: [
-        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Ff2fc7d47c2fe4ba9afb50c370c22f019?format=webp&width=800",
-        "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F00e3a1e2a0ce4cf1998f76f460e32bb7?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2Fb796bbaf4f9e4df49c0919506476eef0%2F669aa43b25204f07818a10fe4bf4643f?format=webp&width=800",
+        "https://cdn.builder.io/api/v1/image/assets%2Fb796bbaf4f9e4df49c0919506476eef0%2F27b1f075c1f5486db35d05958875ba7b?format=webp&width=800",
       ],
-      viewUrl: "https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2Ff2fc7d47c2fe4ba9afb50c370c22f019?format=webp&width=800",
-      color: "accent",
     },
   ];
 
@@ -61,17 +59,17 @@ export default function Quality() {
       <section className="py-16 md:py-20 bg-white">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Image on the Left */}
-            <div className="flex justify-center">
+            {/* Image Side */}
+            <div className="flex justify-center order-2 md:order-1">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F9a1d4ad4fe7e43f68ea68c823395ac46%2F72e6538ac5394874a8d09579db144341?format=webp&width=800"
-                alt="Quality Commitment"
-                className="w-full max-w-sm h-auto object-contain"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fb796bbaf4f9e4df49c0919506476eef0%2F9990711c794c4b25a632ab9a1b736d55?format=webp&width=800"
+                alt="Quality Assurance Checkmark"
+                className="w-full max-w-sm object-contain"
               />
             </div>
 
-            {/* Content on the Right */}
-            <div>
+            {/* Content Side */}
+            <div className="order-1 md:order-2">
               <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-8 md:p-12">
                 <h2 className="text-3xl font-black uppercase tracking-tighter text-primary mb-6">Our Commitment to Quality</h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed">
@@ -107,90 +105,19 @@ export default function Quality() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {certificates.map((cert) => (
-              <div
+              <CertificateCard
                 key={cert.id}
-                className="group rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:border-accent/50"
-              >
-                {/* Certificate Header */}
-                <div className={`bg-gradient-to-r ${cert.color === 'primary' ? 'from-primary/10 to-primary/5' : 'from-accent/10 to-accent/5'} px-6 py-6`}>
-                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-white shadow-md group-hover:shadow-lg transition">
-                    <FileText className={`h-6 w-6 ${cert.color === 'primary' ? 'text-primary' : 'text-accent'}`} />
-                  </div>
-                  <h3 className={`text-lg font-black uppercase tracking-tight ${cert.color === 'primary' ? 'text-primary' : 'text-accent'} line-clamp-2`}>
-                    {cert.name}
-                  </h3>
-                </div>
-
-                {/* Certificate Image with Hover Overlay */}
-                <div className="p-4 border-t border-slate-200 flex justify-center">
-                  <div className="relative rounded-xl overflow-hidden border border-slate-200 group/image max-w-xs w-full">
-                    <img
-                      src={cert.images[0]}
-                      alt={`${cert.name} - Preview`}
-                      className="w-full h-auto object-cover"
-                    />
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover/image:opacity-100 transition-opacity duration-300">
-                      <button
-                        onClick={() => setSelectedCertificate(cert)}
-                        className={`inline-flex items-center gap-2 rounded-xl font-bold uppercase tracking-wide px-6 py-3 text-white transition-all ${
-                          cert.color === 'primary'
-                            ? 'bg-primary hover:bg-primary/90'
-                            : 'bg-accent hover:bg-accent/90'
-                        }`}
-                      >
-                        <FileText className="h-5 w-5" />
-                        View Certificate
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Certificate Description */}
-                <div className="p-4 border-t border-slate-200">
-                  <p className="text-foreground/70 leading-relaxed text-sm line-clamp-3">
-                    {cert.description}
-                  </p>
-                </div>
-              </div>
+                id={cert.id}
+                name={cert.name}
+                description={cert.description}
+                icon={cert.icon}
+                color={cert.color}
+                images={cert.images}
+              />
             ))}
           </div>
         </div>
       </section>
-
-      {/* Certificate Modal */}
-      {selectedCertificate && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto relative">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedCertificate(null)}
-              className="sticky top-4 right-4 float-right z-10 flex items-center justify-center h-10 w-10 rounded-lg bg-slate-100 hover:bg-slate-200 transition"
-            >
-              <X className="h-6 w-6 text-foreground" />
-            </button>
-
-            {/* Certificate Content */}
-            <div className="p-6">
-              <h2 className="text-xl font-bold text-primary mb-6">{selectedCertificate.name}</h2>
-
-              {/* Certificate Pages */}
-              <div className="space-y-6">
-                {selectedCertificate.images.map((image: string, idx: number) => (
-                  <div key={idx} className="flex flex-col items-center">
-                    <p className="text-sm text-foreground/60 mb-3 font-semibold uppercase tracking-wide">Page {idx + 1}</p>
-                    <img
-                      src={image}
-                      alt={`${selectedCertificate.name} - Page ${idx + 1}`}
-                      className="w-full h-auto object-contain rounded-lg border border-slate-300 shadow-sm"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

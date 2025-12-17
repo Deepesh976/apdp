@@ -9,11 +9,11 @@ import L, { LatLngExpression, Map as LeafletMap } from "leaflet";
 // import "leaflet/dist/leaflet.css";
 
 const heroSlides = [
-  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F9af1e8eba2ec47fa880a85a00a13cf5f?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fb67b87af3d6245ed9fdaaf1cd5530594?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fe9cc8240fe4d479f87ef95618f8e13b8?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F12c1d09ef34d4fe5852dcb37b135fc20?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fca88b3b45e374b81be72b4ff69ab19ed?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F5023b3e6686549b2a4397d917faf0244?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2Fde2e39d5ad49462b803d8bc3e2d2a461?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2Fc4f5c0c246d4478d9b26991f931226ce?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F917d4e53e9b748a5b4f395bb2ec4f5b7?format=webp&width=1920",
+  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F2730ba8130ea4131bcc11c6a31d5bfaa?format=webp&width=1920",
 ];
 
 const features = [
@@ -331,7 +331,7 @@ export default function Index() {
             </div>
             <div className="flex justify-center">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fc1c7776ed8eb4fcfa729fb49dd7ac81c?format=webp&width=1920"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F4e67bb7ff632452b92e20e5608710e32?format=webp&width=1920"
                 alt="Accord Power Digital Products"
                 className="w-full max-w-md h-auto"
               />

@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Users,
 } from "lucide-react";
+import ProductDivisionContacts from "../components/ProductDivisionContacts";
 
 type ContactForm = {
   name: string;
@@ -18,9 +19,8 @@ type ContactForm = {
   message: string;
 };
 
-// 👇 Change is here: base URL for backend
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_BASE_URL || "";
 
 export default function Contact() {
   const [form, setForm] = useState<ContactForm>({
@@ -213,11 +213,12 @@ export default function Contact() {
               </form>
             </div>
 
-            {/* (rest of your UI unchanged) */}
-            {/* ... all your Product Division / Customer Care / Map sections ... */}
           </div>
         </div>
       </section>
+
+      {/* Product Division Contacts Section */}
+      <ProductDivisionContacts />
 
       {/* Map Section */}
       <section className="bg-white py-16 md:py-24 border-t border-slate-200">

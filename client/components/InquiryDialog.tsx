@@ -34,10 +34,8 @@ interface InquiryFormData {
   email: string;
 }
 
-// You can also move this to env later:
-// VITE_API_BASE_URL = "http://localhost:5000"
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_BASE_URL || "";
 
 export default function InquiryDialog({
   isOpen,
