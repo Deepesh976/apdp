@@ -18,9 +18,7 @@ export default function ProductDetail() {
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [inquiryDialogOpen, setInquiryDialogOpen] = useState(false);
-  const [inquiryActionType, setInquiryActionType] = useState<
-    "enquire" | "pdf" | "brochure"
-  >("enquire");
+  const [inquiryActionType, setInquiryActionType] = useState<"enquire">("enquire");
 
   const featureCount = product?.features?.length ?? 0;
   const galleryCount = product?.gallery?.length ?? 0;
@@ -45,25 +43,7 @@ export default function ProductDetail() {
 
   // ---------- open popup handlers ----------
 
-  const handleDownloadClick = useCallback(() => {
-    setInquiryActionType("pdf");
-    setInquiryDialogOpen(true);
-  }, []);
-
-  const handleEnquireClick = useCallback(() => {
-    setInquiryActionType("enquire");
-    setInquiryDialogOpen(true);
-  }, []);
-
-  // ❗ FIXED: no event param, this is used on a <button>
-  const handleBrochureClick = useCallback(() => {
-    setInquiryActionType("brochure");
-    setInquiryDialogOpen(true);
-  }, []);
-
-  // ---------- actions AFTER form submit ----------
-
-  const handleDownloadAfterSubmit = useCallback(async () => {
+  const handleDownloadClick = useCallback(async () => {
     if (!product) return;
 
     try {
@@ -79,25 +59,25 @@ export default function ProductDetail() {
     }
   }, [product]);
 
+  const handleEnquireClick = useCallback(() => {
+    setInquiryActionType("enquire");
+    setInquiryDialogOpen(true);
+  }, []);
+
+  const handleBrochureClick = useCallback(() => {
+    if (!product?.brochureUrl) return;
+    window.open(product.brochureUrl, "_blank");
+  }, [product]);
+
   const handleInquirySubmitSuccess = useCallback(
-    async (type: "enquire" | "pdf" | "brochure") => {
+    async (type: "enquire") => {
       console.log("✅ Inquiry submit success in ProductDetail:", {
         type,
         slug,
       });
-
-      if (!product) return;
-
-      if (type === "pdf") {
-        // generate + download PDF after backend save
-        await handleDownloadAfterSubmit();
-      } else if (type === "brochure" && product.brochureUrl) {
-        // open brochure after backend save
-        window.open(product.brochureUrl, "_blank");
-      }
-      // for "enquire" we just close the dialog (no extra action)
+      // close dialog and do nothing else
     },
-    [product, handleDownloadAfterSubmit, slug]
+    [slug]
   );
 
   // ---------- no product ----------

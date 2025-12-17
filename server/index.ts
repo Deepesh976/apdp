@@ -16,12 +16,12 @@ export function createServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  app.use("/api/contact", contactRouter);
-  app.use("/api/product-enquiry", productEnquiryRouter);
-  app.use("/api/customer-locations", customerLocations);
+  app.use("/contact", contactRouter);
+  app.use("/product-enquiry", productEnquiryRouter);
+  app.use("/customer-locations", customerLocations);
 
 
-  app.get("/api/health", (_req, res) => {
+  app.get("/health", (_req, res) => {
     res.json({ status: "ok" });
   });
 

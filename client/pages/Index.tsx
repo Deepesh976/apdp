@@ -375,7 +375,7 @@ export default function Index() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <a
-                  href="tel:+911234567890"
+                  href="tel:040-27148666"
                   className="group inline-flex items-center gap-2 rounded-lg border-2 border-white px-6 py-3 font-bold uppercase tracking-wide text-white transition hover:bg-white/10"
                 >
                   <Phone className="h-4 w-4" />

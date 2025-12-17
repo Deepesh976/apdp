@@ -25,18 +25,18 @@ export default function Footer() {
 
         <div className="flex items-center gap-4">
           <a
-            href="tel:+911234567890"
+            href="tel:040-27148666"
             className="inline-flex items-center gap-1 text-xs font-semibold text-foreground/80 hover:text-accent transition"
           >
             <Phone className="h-3.5 w-3.5" />
-            +91 12345 67890
+            040-27148666
           </a>
           <a
             href="mailto:info@accordpower.co.in"
             className="inline-flex items-center gap-1 text-xs font-semibold text-foreground/80 hover:text-accent transition"
           >
             <Mail className="h-3.5 w-3.5" />
-            info@accordpower.co.in
+            apcpl@accordpower.in
           </a>
         </div>
       </div>
