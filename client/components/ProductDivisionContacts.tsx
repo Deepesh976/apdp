@@ -26,7 +26,7 @@ export default function ProductDivisionContacts() {
   const divisions: ProductDivision[] = [
     {
       title: "INDUSTRIAL & COMMERCIAL",
-      description: "(RO, Water ATM, etc)",
+      description: "(80, Water ATM, Auto Wells, etc)",
       icon: <Building2 className="h-6 w-6" />,
       bgColor: "bg-red-50",
       iconBgColor: "bg-blue-100 text-blue-600",
@@ -40,8 +40,7 @@ export default function ProductDivisionContacts() {
       ],
     },
     {
-      title: "UF & WASTE WATER PRODUCTS",
-      description: "(PUMP STARTERS)",
+      title: "WEST TO PRODUCTS",
       icon: <Leaf className="h-6 w-6" />,
       bgColor: "bg-pink-50",
       iconBgColor: "bg-blue-100 text-blue-600",
@@ -69,18 +68,18 @@ export default function ProductDivisionContacts() {
   const regionalSupport: RegionalSupportState[] = [
     {
       states: "MH, OD, AP, TS, WB, GJ",
-      languages: "Hindi",
-      contact: "7377838889",
+      languages: "Hindi / Telugu / English",
+      contact: "7337363699",
     },
     {
       states: "KA, TN, KL",
-      languages: "Tamil",
-      contact: "8977234147",
+      languages: "Tamil, English / Hindi",
+      contact: "8977034147",
     },
     {
-      states: "JK, HP, HR, DL, UP, BR, MP",
-      languages: "HindiEnglish",
-      contact: "8977234148",
+      states: "JM, HR, HP, DL, UP, BH, RJ, MP",
+      languages: "Hindi/English",
+      contact: "8977034148",
     },
   ];
 
@@ -169,30 +168,49 @@ export default function ProductDivisionContacts() {
           </div>
 
           {/* Regional Support */}
-          <div className="bg-blue-50 rounded-2xl p-6 shadow-md border border-slate-200">
-            <h3 className="text-sm font-black uppercase tracking-wide text-secondary mb-4">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 shadow-md border border-blue-100">
+            <h3 className="text-sm font-black uppercase tracking-wide text-secondary mb-2">
               Regional Support
             </h3>
-            <p className="text-xs text-foreground/60 mb-4">
-              State-wise contact numbers
+            <p className="text-xs text-foreground/60 mb-6">
+              Multi-language support across regions
             </p>
 
-            <div className="space-y-3">
-              {regionalSupport.map((support, idx) => (
-                <div key={idx} className="flex gap-3 text-sm">
-                  <div className="flex-1">
-                    <p className="font-semibold text-foreground mb-1">
+            <div className="overflow-hidden rounded-lg border border-blue-200">
+              {/* Table Header */}
+              <div className="grid grid-cols-3 gap-4 bg-gradient-to-r from-secondary to-secondary/80 p-4 text-white font-bold text-xs uppercase tracking-wide">
+                <div>States</div>
+                <div>Languages</div>
+                <div className="text-right">Contact</div>
+              </div>
+
+              {/* Table Rows */}
+              <div>
+                {regionalSupport.map((support, idx) => (
+                  <div
+                    key={idx}
+                    className={`grid grid-cols-3 gap-4 p-4 text-sm border-t border-blue-100 ${
+                      idx % 2 === 0 ? "bg-white" : "bg-blue-50/50"
+                    } hover:bg-blue-100/30 transition`}
+                  >
+                    <div className="font-semibold text-foreground">
                       {support.states}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xs text-foreground/60 mb-1">
+                    </div>
+                    <div className="text-foreground/70">
                       {support.languages}
-                    </p>
-                    <p className="font-semibold text-secondary">{support.contact}</p>
+                    </div>
+                    <div className="text-right">
+                      <a
+                        href={`tel:${support.contact}`}
+                        className="inline-flex items-center gap-2 font-bold text-secondary hover:text-secondary/80 transition"
+                      >
+                        <Phone className="h-4 w-4" />
+                        {support.contact}
+                      </a>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

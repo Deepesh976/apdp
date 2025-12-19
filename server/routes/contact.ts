@@ -111,25 +111,5 @@ router.post("/", async (req: Request, res: Response) => {
   }
 });
 
-// GET /api/admin/contacts
-router.get("/admin/all", async (_req: Request, res: Response) => {
-  try {
-    const contacts = await Contact.find()
-      .sort({ createdAt: -1 })
-      .lean();
-
-    return res.json({
-      success: true,
-      data: contacts,
-    });
-  } catch (error) {
-    console.error("Fetch contacts error:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Failed to fetch contacts",
-    });
-  }
-});
-
 
 export default router;

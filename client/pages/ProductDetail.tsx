@@ -43,8 +43,9 @@ export default function ProductDetail() {
   const heroHighlights = useMemo(() => {
     if (!product) return [];
     const items: { label: string; value: string }[] = [];
-    if (featureCount)
+    if (featureCount) {
       items.push({ label: "Key Features", value: `${featureCount}` });
+    }
     return items;
   }, [featureCount, product]);
 
@@ -77,57 +78,79 @@ export default function ProductDetail() {
 
   const closeModal = () => {
     setOpen(false);
+    setActionType(null);
     setForm({ name: "", email: "", phone: "" });
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async () => {
-    if (!actionType) return;
+    if (!product || !actionType) return;
 
-    if (form.name.length < 2 || !form.email) {
-      alert("Please enter valid details");
+    if (!form.name || !form.email) {
+      alert("Name and Email are required");
       return;
     }
 
     try {
       setLoading(true);
 
+      /* =========================
+         1️⃣ Save enquiry
+      ========================= */
       const res = await fetch("/api/product-enquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
           phone: form.phone,
           actionType,
-          productSlug: slug,
+          productSlug: product.slug,
           productTitle: product.title,
         }),
       });
 
       if (!res.ok) {
-        throw new Error("Failed to submit enquiry");
+        throw new Error("Failed to save enquiry");
       }
 
-      // ✅ Download after successful save
-      const downloadUrl =
+      /* =========================
+         2️⃣ Resolve file safely
+      ========================= */
+      const filePath =
         actionType === "pdf"
           ? product.pdfUrl
           : product.brochureUrl;
 
-      if (downloadUrl) {
-        window.open(downloadUrl, "_blank");
+      if (!filePath) {
+        throw new Error("File not available");
       }
 
+      // ✅ IMPORTANT FIX:
+      // Extract ONLY the filename (backend expects this)
+      const fileName = filePath.split("/").pop();
+
+      if (!fileName) {
+        throw new Error("Invalid file path");
+      }
+
+      /* =========================
+         3️⃣ Trigger backend download
+      ========================= */
+      window.location.href = `/api/download?type=${actionType}&file=${encodeURIComponent(
+        fileName
+      )}`;
+
       closeModal();
-    } catch (err) {
-      alert("Unable to process request. Please try again.");
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -200,19 +223,20 @@ export default function ProductDetail() {
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 text-sm font-semibold uppercase text-white"
                 >
                   <Download className="h-5 w-5" />
-                  Download Product PDF
+                  Download PDF
                 </button>
               )}
 
-              {product.brochureUrl && (
-                <button
-                  onClick={() => openModal("brochure")}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border px-6 py-4 text-sm font-semibold uppercase"
-                >
-                  <FileText className="h-5 w-5" />
-                  Download Brochure
-                </button>
-              )}
+              {product.category !== "Accessories" &&
+                product.brochureUrl && (
+                  <button
+                    onClick={() => openModal("brochure")}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border px-6 py-4 text-sm font-semibold uppercase"
+                  >
+                    <FileText className="h-5 w-5" />
+                    Download Brochure
+                  </button>
+                )}
             </div>
 
             <div className="mt-6 flex gap-3 rounded-xl bg-primary/10 p-4">
@@ -234,9 +258,7 @@ export default function ProductDetail() {
         </aside>
       </section>
 
-      {/* =========================
-         MODAL
-      ========================= */}
+      {/* MODAL */}
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
           <div className="relative w-full max-w-md rounded-2xl bg-white p-6">

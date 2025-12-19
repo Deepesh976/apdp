@@ -1,8 +1,4 @@
-export type CategoryKey =
-  | "RO Control Panel"
-  | "Accessories"
-  | "Water ATW"
-  | "Starters";
+export type CategoryKey = "RO Control Panel" | "Accessories" | "Water ATW" | "Starters";
 
 export interface ProductSpecKV {
   label: string;
@@ -22,375 +18,639 @@ export interface Product {
   pdfUrl?: string;
 }
 
+const img = (path: string) => `https://accordpower.co.in/${path.replace(/^\//, "")}`;
+
 export const PRODUCTS: Product[] = [
   {
     slug: "single-phase-smart-starter",
     title: "Single Phase Smart Starter",
     category: "Starters",
     description:
-      "Microcontroller-based digital pump starter for single-phase supply with comprehensive protection.",
+      "Microcontroller-based digital pump starter for single-phase supply (230V, 50Hz, AC) with comprehensive protection features and digital monitoring capabilities.",
     features: [
       "Micro controller Digital Pump Starter",
       "Digital display of Volt, Amp & Timer",
-      "High & Low Voltage Protection",
-      "Dry Run & Overload Protection",
+      "LED for appropriate fault indication",
+      "Easy to setting Dry Run & Over Load Amp with ONE TOUCH",
+      "Wide current range",
+      "High voltage, Low Voltage, Over Load & Dry Run Protection",
+      "Inbuilt OFF timer facility",
+      "Floaty option for stop the overflow water",
+      "Programmable input and output voltage settings",
+      "Automatic dry run detection",
     ],
     specs: [
       { label: "Type", value: "Single Phase Pump Starter" },
-      { label: "Input Supply", value: "230V AC, 50Hz" },
-      { label: "Warranty", value: "24 Months" },
+      { label: "Input Supply", value: "230V, 50Hz, AC" },
+      { label: "Input Terminals", value: "L & N" },
+      { label: "Output Terminals", value: "R, Y & B (for Pump Motor)" },
+      { label: "Display Type", value: "Digital (Volt, Amp & Timer)" },
+      { label: "Protection Features", value: "High Voltage, Low Voltage, Over Load, Dry Run" },
+      { label: "Timer Facility", value: "Inbuilt OFF timer" },
+      { label: "Programming", value: "Menu-based with UP/DOWN keys" },
+      { label: "Warranty", value: "24 months (6 months for Capacitors)" },
+      { label: "Manufacturer", value: "ACCORD POWER DIGITAL PRODUCTS" },
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fe501286b5a0940398e9e16d75f7c39a5",
-    brochureUrl: "/brochures/starters/single-phase-smart-starter.pdf",
-    pdfUrl: "/pdfs/starters/single-phase-smart-starter.pdf",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2Fe501286b5a0940398e9e16d75f7c39a5?format=webp&width=800",
+    brochureUrl: "/brochures/single-phase-smart-starter.pdf",
+    pdfUrl: "/pdfs/single-phase-smart-starter.pdf",
   },
-
   {
     slug: "three-phase-smart-starter",
     title: "Three Phase Smart Starter",
     category: "Starters",
     description:
-      "Advanced microcontroller-based digital pump starter for three-phase supply.",
+      "Advanced microcontroller-based digital pump starter for three-phase supply with intelligent protection, monitoring capabilities and comprehensive safety features.",
     features: [
-      "3-Phase Voltage Monitoring",
-      "Automatic Phase Detection",
-      "Dry Run Protection",
+      "Micro controller Digital Pump Starter",
+      "Digital display of Volt, Amp & Timer",
+      "LED for appropriate fault indication",
+      "Easy to setting Dry Run & Over Load Amp with ONE TOUCH",
+      "Wide current range",
+      "High voltage, Low Voltage, Over Load & Dry Run Protection",
+      "Inbuilt OFF timer facility",
+      "Floaty option for stop the overflow water",
+      "Three-phase voltage monitoring and balancing",
+      "Automatic phase sequence detection",
+      "Programmable safety settings",
     ],
     specs: [
       { label: "Type", value: "Three Phase Pump Starter" },
-      { label: "Input Supply", value: "380–415V AC" },
-      { label: "Warranty", value: "24 Months" },
+      { label: "Input Supply", value: "Three Phase, 380V-415V, 50Hz, AC" },
+      { label: "Input Terminals", value: "R, Y, B & N" },
+      { label: "Output Terminals", value: "R, Y, B (for Pump Motor)" },
+      { label: "Display Type", value: "Digital (Volt, Amp & Timer)" },
+      { label: "Phase Monitoring", value: "3-Phase Voltage Monitoring" },
+      { label: "Protection Features", value: "High Voltage, Low Voltage, Over Load, Dry Run, Phase Failure" },
+      { label: "Timer Facility", value: "Inbuilt OFF timer" },
+      { label: "Programming", value: "Menu-based with UP/DOWN keys" },
+      { label: "Phase Sequence", value: "Automatic Detection" },
+      { label: "Warranty", value: "24 months (6 months for Capacitors)" },
+      { label: "Manufacturer", value: "ACCORD POWER DIGITAL PRODUCTS" },
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F8266322ba67049b1b6856db0cc36276c",
-    brochureUrl: "/brochures/starters/three-phase-smart-starter.pdf",
-    pdfUrl: "/pdfs/starters/three-phase-smart-starter.pdf",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F8266322ba67049b1b6856db0cc36276c?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F8266322ba67049b1b6856db0cc36276c?format=webp&width=800"],
+    brochureUrl: "/brochures/three-phase-smart-starter.pdf",
+    pdfUrl: "/pdfs/three-phase-smart-starter.pdf",
   },
-
   {
     slug: "ap-11-13-33-pro-with-tds",
-    title: "AP 11 / 13 / 33 PRO WITH TDS",
+    title: "AP 11 Pro / 13 Pro / 33 Pro WITH TDS",
     category: "RO Control Panel",
     description:
-      "Advanced RO control panel with TDS monitoring and full system protection.",
+      "Advanced microcontroller-based RO control panel with TDS monitoring, voltage & current sensing, and comprehensive protection features for 1:1, 1:3, and 3:3 configurations.",
     features: [
-      "TDS Monitoring",
-      "Voltage & Current Sensing",
-      "LCD Display",
-      "LPS & HPS Protection",
+      "TDS, Voltage & Current Sensing",
+      "Microcontroller-based intelligent control",
+      "4-line LCD display with complete plant information",
+      "Multi-sensor support with floats for RWT/TWT/Dosing tank",
+      "LPS and HPS pressure monitoring",
+      "Auto/Manual control settings",
+      "AC low/high voltage protection",
+      "Controls UV, dosing pump, and solenoid valves",
+      "TDS and conductivity monitoring",
+      "8 LED indications for system states",
+      "Password protection and factory default reset",
+      "Manual fallback if PCB fails",
     ],
     specs: [
-      { label: "Models", value: "AP 1:1, 1:3, 3:3 Pro" },
-      { label: "Display", value: "4-Line LCD" },
-      { label: "Warranty", value: "12 Months" },
+      { label: "Models", value: "AP 1:1 Pro, AP 1:3 Pro, AP 3:3 Pro (TDS & NON-TDS)" },
+      { label: "Display", value: "4-Line LCD with TDS Monitoring" },
+      { label: "Voltage Monitoring", value: "3-Phase (RYB) voltage monitoring and protection" },
+      { label: "Input Supply (1:3 & 3:3)", value: "3-Phase 440V" },
+      { label: "RWP (1:1)", value: "Single Phase 2 HP" },
+      { label: "RWP (1:3 & 3:3)", value: "3-Phase 3-5 HP" },
+      { label: "HPP", value: "3-5 HP as per variant" },
+      { label: "Sensors", value: "LPS, HPS, RWT/TWT/Dosing floats, TDS" },
+      { label: "Outputs", value: "RWP, HPP, dosing pump, flushing solenoid, UV" },
+      { label: "Warranty", value: "12 months from date of purchase" },
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F9e1c6f3f9261452abe587b2702e62c4c",
-    brochureUrl:
-      "/brochures/control-panel/ap-11-pro-13-pro-33-pro-with-tds.pdf",
-    pdfUrl:
-      "/pdfs/control-panel/ap-11-pro-13-pro-and-33-pro-with-tds.pdf",
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F9e1c6f3f9261452abe587b2702e62c4c?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F9e1c6f3f9261452abe587b2702e62c4c?format=webp&width=800"],
+    brochureUrl: "/brochures/ap-11-pro-13-pro-33-pro-with-tds.pdf",
+    pdfUrl: "/pdfs/ap-11-pro-13-pro-and-33-pro-with-tds.pdf",
   },
-
   {
     slug: "ap-11-13-33-plus-gsm-plus-with-tds",
-    title: "AP 11 / 13 / 33 PLUS (GSM+) WITH TDS",
+    title: "AP 1-1 / 1-3 / 3-3 PLUS & GSM PLUS WITH TDS",
     category: "RO Control Panel",
     description:
-      "RO Control Panel (Plus/GSM+) with TDS and GSM monitoring for remote alerts.",
-    features: ["TDS & GSM Monitoring", "Auto Restart", "System Protection"],
-    specs: [
-      { label: "Models", value: "AP 11, 13, 33 Plus (GSM+)" },
-      { label: "Display", value: "LCD" },
-      { label: "Warranty", value: "12 Months" },
+      "Feature-rich RO control panel with GSM connectivity, TDS monitoring, voltage & current sensing for both standalone and remote monitoring applications.",
+    features: [
+      "AP 1:1 PLUS - GSM, TDS, Voltage & Current Sense",
+      "4-line LCD with full plant information",
+      "GSM-based real-time data and fault alerts to web, Android app and two mobiles",
+      "Remote control of all plant functions via app/phone",
+      "TDS and conductivity monitoring",
+      "Multi-sensor support for water level and pressure",
+      "Auto/Manual settings for RWP and HPP",
+      "Date & Time setting with password protection",
+      "Flow sensor calibration and management",
+      "Auto flush cycle programmable",
+      "LPS delay and retry time settings",
+      "Factory default reset capability",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F6d235257069a49f7804fe60c676cc31a?format=webp&width=800",
-    brochureUrl: "/brochures/control-panel/ap-11-13-33-with-tds.pdf",
-    pdfUrl: "/pdfs/control-panel/ap-11-13-33-with-tds.pdf",
+    specs: [
+      { label: "Model Variants", value: "AP 1-1 Plus, AP 1-3 Plus, AP 3-3 Plus, AP GSM 1-1, AP GSM 1-3, AP GSM 3-3" },
+      { label: "Display", value: "4-Line LCD with Password Entry" },
+      { label: "Input Supply Options", value: "Single Phase 230V and 3-Phase 440V" },
+      { label: "Enclosure Dimensions (1-1)", value: "185 x 110 x 210 mm" },
+      { label: "Enclosure Dimensions (1-3)", value: "185 x 155 x 210 mm" },
+      { label: "Programming Features", value: "Date/Time, Auto Amps, Amp/Voltage, Flow Sensor, Panel, GSM Settings" },
+      { label: "GSM Connectivity", value: "Two phone numbers for admin and operator control" },
+      { label: "Warranty", value: "12 months from date of purchase" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F7bd0eac0cad644a2bc85310345530536?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F0d66e3392c0a42458b9911678eb6f0ca?format=webp&width=800", "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F7bd0eac0cad644a2bc85310345530536?format=webp&width=800"],
+    brochureUrl: "/brochures/ap-smart-plus-with-tds.pdf",
+    pdfUrl: "/pdfs/ap-smart-plus-with-tds.pdf",
   },
-
   {
     slug: "ap-smart-plus-with-tds",
     title: "AP SMART PLUS RO Control Panel",
     category: "RO Control Panel",
     description:
-      "Compact RO control panel with TDS monitoring and auto current calibration.",
-    features: ["Auto Amp Calibration", "Voltage Display", "Compact Design"],
-    specs: [
-      { label: "Voltage", value: "Single Phase 230V" },
-      { label: "Warranty", value: "12 Months" },
+      "Compact, efficient RO control panel with TDS monitoring, auto current calibration, and comprehensive protection for single-phase water purification systems.",
+    features: [
+      "AP SMART LED PLUS - TDS, Voltage, Auto Current Calibration",
+      "LPS Retrieve (10 Minutes) & Current Sense",
+      "Compact enclosure design (185 x 55 x 210 mm)",
+      "Dual pump current setting capability",
+      "Auto ampere setting functionality",
+      "LED indications for fault detection",
+      "Raw water tank empty protection",
+      "LPS (Low Pressure Switch) monitoring",
+      "HPS (High Pressure Switch) monitoring",
+      "Treated water tank full detection",
+      "RWP and HPP overload protection",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fa5a3b4c58cdc41ec80b2a65d4fc50d3d",
-    brochureUrl: "/brochures/control-panel/ap-smart-plus-with-tds.pdf",
-    pdfUrl: "/pdfs/control-panel/ap-smart-plus-with-tds.pdf",
+    specs: [
+      { label: "Model", value: "AP SMART LED PLUS" },
+      { label: "Operating Voltage", value: "Single Phase 230V" },
+      { label: "Enclosure Dimensions", value: "185 x 55 x 210 mm" },
+      { label: "Display Type", value: "Voltage Display with LED Indicators" },
+      { label: "Key Functions", value: "Menu, Up, Down buttons for settings" },
+      { label: "RWP Current Setting", value: "Adjustable for pump protection" },
+      { label: "HPP Current Setting", value: "Adjustable for pump protection" },
+      { label: "Auto Amp Setting", value: "Automatic pump current calibration" },
+      { label: "Protection Features", value: "RWT Empty, LPS/HPS, TWT Full, RWP/HPP Overload" },
+      { label: "Warranty", value: "12 months from date of purchase" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fa5a3b4c58cdc41ec80b2a65d4fc50d3d?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fa5a3b4c58cdc41ec80b2a65d4fc50d3d?format=webp&width=800"],
+    brochureUrl: "/brochures/ap-smart-plus-with-tds.pdf",
+    pdfUrl: "ap-smart-plus-with-tds.pdf",
   },
-
   {
     slug: "ap-jumbo-pro-plus-33-with-tds",
     title: "AP JUMBO PRO & PLUS 33 WITH TDS",
     category: "RO Control Panel",
-    description: "High-capacity RO control panel with GSM and TDS monitoring.",
-    features: ["GSM Connectivity", "TDS Monitoring", "Auto Calibration"],
-    specs: [
-      { label: "Capacity", value: "500–1000 LPH" },
-      { label: "Warranty", value: "12 Months" },
+    description:
+      "High-capacity RO control panel for large-scale water purification systems with advanced features including GSM connectivity, TDS monitoring, and comprehensive protection.",
+    features: [
+      "AP 1:1 PLUS GSM, TDS, Voltage & Current Sense",
+      "4-line LCD with full plant information display",
+      "GSM-based real-time data and fault alerts",
+      "Remote plant control via mobile app and web portal",
+      "Multiple dispensing mode options",
+      "Precise water volume and pricing control",
+      "Date & Time settings with password protection",
+      "Auto Ampere calibration during plant operation",
+      "Flow sensor calibration with auto-detection",
+      "Panel settings including flush cycles and maintenance",
+      "GSM signal monitoring and antenna diagnostics",
+      "Default factory settings recovery",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F793b1845c65040a8a20c0251ccc6d189",
-    brochureUrl:
-      "/brochures/control-panel/ap-jumbo-pro-and-plus-33-with-tds.pdf",
-    pdfUrl: "/pdfs/control-panel/ap-jumbo-pro-and-plus-33-with-tds.pdf",
+    specs: [
+      { label: "Model Variants", value: "AP 1-1 Plus, AP 1-3 Plus, AP 3-3 Plus with GSM options" },
+      { label: "Display Type", value: "4-Line LCD with Menu Navigation" },
+      { label: "Enclosure Size (1-1)", value: "185 x 110 x 210 mm" },
+      { label: "Enclosure Size (1-3)", value: "185 x 155 x 210 mm" },
+      { label: "Input Power Options", value: "Single Phase 230V and 3-Phase 440V" },
+      { label: "RO Capacity Settings", value: "1000 LPH or 500 LPH configurable" },
+      { label: "Flow Sensors", value: "Up to 4 independent sensors (FS1, FS2)" },
+      { label: "GSM Features", value: "SMS control, real-time alerts, multiple user support" },
+      { label: "Operating Modes", value: "Auto and Manual with remote override" },
+      { label: "Warranty", value: "12 months from date of purchase" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F793b1845c65040a8a20c0251ccc6d189?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F793b1845c65040a8a20c0251ccc6d189?format=webp&width=800"],
+    brochureUrl: "/brochures/ap-jumbo-pro-and-plus-33-with-tds.pdf",
+    pdfUrl: "/pdfs/ap-jumbo-pro-and-plus-33-with-tds.pdf",
   },
-
   {
     slug: "ap-titanic-33-with-tds-star-delta",
-    title: "AP Titanic 33 WITH TDS (Star–Delta)",
+    title: "AP Titanic 33 WITH TDS (Star – Delta)",
     category: "RO Control Panel",
-    description: "Industrial RO control panel with Star–Delta starter and GSM.",
-    features: ["Star–Delta Starter", "3-Phase Monitoring", "GSM Alerts"],
-    specs: [
-      { label: "Input", value: "3-Phase 440V" },
-      { label: "Warranty", value: "12 Months" },
+    description:
+      "Industrial-grade RO control panel with Star-Delta starter configuration, GSM connectivity, and advanced TDS monitoring for high-capacity three-phase systems.",
+    features: [
+      "AP 1:1 PLUS GSM, TDS, Voltage & Current Sense",
+      "Star-Delta starter configuration for smooth motor startup",
+      "4-line LCD with complete plant information",
+      "GSM-based real-time monitoring and alerts",
+      "Remote control via mobile app and web portal",
+      "TDS and conductivity monitoring",
+      "Three-phase voltage sensing and protection",
+      "Automatic flow sensor calibration",
+      "Programmable panel settings and maintenance cycles",
+      "Multiple user management with SMS control",
+      "Password-protected settings and factory reset",
+      "Comprehensive fault diagnostics and LED indicators",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F579a79c430284133a0e0e06ab4589ba1",
-    brochureUrl:
-      "/brochures/control-panel/ap-titanic-33-with-tds-star-delta.pdf",
-    pdfUrl: "/pdfs/control-panel/ap-titanic-33-with-tds.pdf",
+    specs: [
+      { label: "Model", value: "AP Titanic 33 (1:1, 1:3, 3:3 variants)" },
+      { label: "Starter Type", value: "Star-Delta (Y-Δ) for smooth startup" },
+      { label: "Input Supply", value: "3-Phase 440V, 50Hz" },
+      { label: "Display", value: "4-Line LCD with Password Protection" },
+      { label: "Enclosure Dimensions (1-1)", value: "185 x 110 x 210 mm" },
+      { label: "Enclosure Dimensions (1-3)", value: "185 x 155 x 210 mm" },
+      { label: "RWP Range", value: "Single Phase 230V to 3-Phase 440V" },
+      { label: "HPP Range", value: "Up to 5 HP at 440V 3-Phase" },
+      { label: "GSM Connectivity", value: "Real-time monitoring with two-way SMS control" },
+      { label: "Protection Features", value: "Over/Under voltage, RWT empty, LPS/HPS, Tank full, Overload" },
+      { label: "Warranty", value: "12 months from date of purchase" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F579a79c430284133a0e0e06ab4589ba1?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F579a79c430284133a0e0e06ab4589ba1?format=webp&width=800"],
+    brochureUrl: "/brochures/ap-titanic-33-with-tds-star-delta.pdf",
+    pdfUrl: "/pdfs/ap-titanic-33-with-tds.pdf",
   },
-
   {
     slug: "chiller-panel-ap-thunder-11",
-    title: "Chiller Panel – AP Thunder 11",
+    title: "Chiller Panel - AP Thunder 11",
     category: "RO Control Panel",
-    description: "Chiller panel for temperature control in RO systems.",
-    features: ["Temperature Control", "Auto Shutdown", "Compact Design"],
-    specs: [
-      { label: "Power", value: "AC 230V" },
-      { label: "Warranty", value: "12 Months" },
+    description:
+      "Specialized chiller control panel designed for temperature-sensitive RO systems, providing precise thermal management and system protection.",
+    features: [
+      "Dedicated chiller panel for RO water temperature management",
+      "Precise temperature control and monitoring",
+      "Automated cooling cycle management",
+      "Integrated protection circuits",
+      "LED status indicators for system health",
+      "User-friendly control interface",
+      "Compact and durable enclosure design",
+      "Suitable for commercial RO installations",
+      "Temperature sensor integration",
+      "Automatic shutdown on over-temperature conditions",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fad153e6585554d0eaa7fc0c4e5fcbc18",
-    brochureUrl:
-      "/brochures/control-panel/chillar-panel-model-ap-thunder-11.pdf",
-    pdfUrl: "/pdfs/control-panel/chillar-panel-model-ap-thunder-11.pdf",
+    specs: [
+      { label: "Model", value: "AP Thunder 11 Chiller Panel" },
+      { label: "Function", value: "Water Temperature Control for RO Systems" },
+      { label: "Enclosure Dimensions", value: "210 x 292 x varies (compact design)" },
+      { label: "Control Type", value: "Automated thermal management" },
+      { label: "Display", value: "LED status indicators" },
+      { label: "Input Power", value: "AC 230V" },
+      { label: "Temperature Monitoring", value: "Digital sensor input" },
+      { label: "Safety Features", value: "Overheat protection, automatic shutdown" },
+      { label: "Application", value: "Commercial RO water chilling systems" },
+      { label: "Warranty", value: "12 months from date of purchase" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fad153e6585554d0eaa7fc0c4e5fcbc18?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fad153e6585554d0eaa7fc0c4e5fcbc18?format=webp&width=800"],
+    brochureUrl: "/brochures/chillar-panel-model-ap-thunder-11.pdf",
+    pdfUrl: "/pdfs/chillar-panel-model-ap-thunder-11.pdf",
   },
-
   {
     slug: "time-based",
-    title: "Time Based – Multi Coin Water Controller",
+    title: "Time Based – Single & Multi Coin Water Controller",
     category: "Water ATW",
-    description: "Time-based water ATM controller with coin support.",
-    features: ["Battery Backup", "Multi Coin Support", "Solar Charging Ready"],
-    specs: [
-      { label: "Pump", value: "1/2 HP" },
-      { label: "Display", value: "7 Segment" },
+    description:
+      "SMPS‑operated time‑based water controller (ATM) with battery backup, solar charging provision and multi‑coin support.",
+    features: [
+      "Battery backup with solar charging provision",
+      "Programmable single coin (Re 1 to Rs 10)",
+      "Separate coin counter",
+      "Seven‑segment display shows dispensing time",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F11ad6ac0fe7b41008b4d1ceea345ae9a",
-    brochureUrl:
-      "/brochures/water-atw/time-based-single-multi-coin-water-controller.pdf",
-    pdfUrl: "/pdfs/water-atw/time-based-single-and-multi-coin-water-controller.pdf",
+    specs: [
+      { label: "ATW Configuration", value: "Time Based – Single & Multi Coin Water Controller" },
+      { label: "Size", value: "Skid (L=200mm, W=150mm, H=370mm)" },
+      { label: "Water Pump", value: "1/2 HP (with gravity, pump not required)" },
+      { label: "Output Connection", value: "Water pump, AC solenoid valve" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F11ad6ac0fe7b41008b4d1ceea345ae9a?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F11ad6ac0fe7b41008b4d1ceea345ae9a?format=webp&width=800"],
+    brochureUrl: "/brochures/time-based-single-multi-coin-water-controller.pdf",
+    pdfUrl: "/pdfs/time-based-single-and-multi-coin-water-controller.pdf",
   },
-
   {
     slug: "flow-based",
-    title: "Flow Based – Multi Coin Water Controller",
+    title: "Flow & Time Based – Multi Coin Water Controller",
     category: "Water ATW",
-    description: "Flow-based water ATM controller with GSM.",
-    features: ["Flow Sensor Based", "Brand Display", "Multi Coin"],
-    specs: [
-      { label: "Pump", value: "1/2 HP" },
-      { label: "Control", value: "Flow Based" },
+    description:
+      "SMPS‑operated flow‑based GSM water controller with multi‑coin and branding support, suited for multi‑dispensing systems.",
+    features: [
+      "Battery backup with solar charging provision",
+      "Up to six types of multi‑coins programmable",
+      "Brand promotion on 2‑line 16‑digit LCD",
+      "Multi���denomination (Rs 1–10) for multi dispensing",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F5339c16d85b24470a02fee5680f87278",
-    brochureUrl:
-      "/brochures/water-atw/flow-time-based-multi-coin-water-controller.pdf",
-    pdfUrl: "/pdfs/water-atw/flow-time-based-multi-coin-water-controller.pdf",
+    specs: [
+      { label: "ATW Configuration", value: "Flow Based – Single & Multi Coin Water Controller" },
+      { label: "Size", value: "Skid (L=200mm, W=170mm, H=370mm)" },
+      { label: "Water Pump", value: "1/2 HP (with gravity, pump not required)" },
+      { label: "Output Connection", value: "Water pump, AC solenoid valve, flow sensor" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F5339c16d85b24470a02fee5680f87278?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F5339c16d85b24470a02fee5680f87278?format=webp&width=800"],
+    brochureUrl: "/brochures/flow-time-based-multi-coin-water-controller.pdf",
+    pdfUrl: "/pdfs/flow-time-based-multi-coin-water-controller.pdf",
   },
-
   {
     slug: "flow-based-rfid",
-    title: "Flow Based – RFID Water Controller",
+    title: "Water Vending Controller With RFID Card",
     category: "Water ATW",
-    description: "Flow-based water vending controller with RFID card support.",
-    features: ["Flow-based metering", "RFID Card Support", "Compact Controller"],
-    specs: [
-      { label: "Control", value: "Flow Based (RFID)" },
-      { label: "Warranty", value: "12 Months" },
+    description:
+      "RFID card‑based flow controller (ATW device) with GSM, battery backup, multi‑tap operation, adjustable volume/price and remote monitoring.",
+    features: [
+      "Battery backup with solar charging provision",
+      "Operate with two, three and four taps",
+      "Adjustable dispensing volume and price",
+      "Four dispensing modes: Normal, Normal & Cold, Fixed, Free",
+      "Remote monitoring via Android app and web portal/cloud",
+      "Supports Paytm water dispense",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fbace20cebf4a4ec69f559e4fb99ace7d?format=webp&width=800",
-    brochureUrl: "/brochures/water-atw/water-vending-controller-with-rfid-card.pdf",
-    pdfUrl: "/pdfs/water-atw/water-vending-controller-with-rfid-card.pdf",
+    specs: [
+      { label: "ATW Configuration", value: "Flow Based – RFID + GSM Water Controller (WVM)" },
+      { label: "Size", value: "Skid (L=160mm, W=50mm, H=225mm)" },
+      { label: "Water Pump", value: "1/2 HP (with gravity, pump not required)" },
+      { label: "Output Connection", value: "Water pump, AC/DC solenoid valve, flow sensor" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F28cb03158492422db5001a3531b85cf4?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F28cb03158492422db5001a3531b85cf4?format=webp&width=800"],
+    brochureUrl: "/brochures/water-vending-controller-with-rfid-card.pdf",
+    pdfUrl: "/pdfs/water-vending-controller-with-rfid-card.pdf",
   },
-
   {
     slug: "flow-based-rfid-coin",
-    title: "Flow Based – RFID + Multi Coin Controller",
+    title: "Water Vending Controller With RFID + Multi Coin",
     category: "Water ATW",
     description:
-      "Flow-based controller supporting RFID cards and multi-coin acceptance.",
-    features: ["Flow Metering", "RFID + Coin Support", "Multi-coin Interface"],
-    specs: [
-      { label: "Control", value: "Flow Based (RFID + Coin)" },
-      { label: "Warranty", value: "12 Months" },
+      "ATW combo device supporting both RFID card and coin with multi‑tap operation, multiple modes and remote monitoring.",
+    features: [
+      "Battery backup with solar charging provision",
+      "Operate with two, three and four taps",
+      "Adjustable dispensing volume and price",
+      "Four dispensing modes: Normal, Normal & Cold, Fixed, Free",
+      "Remote monitoring via Android app and web portal/cloud",
+      "Paytm support",
+      "Multi‑functional controller with card and coin",
+      "Six types of coins programmable",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F6a3e4af0e563444c853ad60bd5d018be?format=webp&width=800",
-    brochureUrl:
-      "/brochures/water-atw/water-vending-controller-with-rfid-card-and-multi-coin.pdf",
-    pdfUrl: "/pdfs/water-atw/water-vending-controller-with-rfid-and-multi-coin.pdf",
+    specs: [
+      { label: "ATW Configuration", value: "Flow Based – RFID + Coin Water Controller (ATW Combo)" },
+      { label: "Size", value: "Skid (L=160mm, W=50mm, H=225mm)" },
+      { label: "Water Pump", value: "1/2 HP (with gravity, pump not required)" },
+      { label: "Output Connection", value: "Water pump, AC/DC solenoid valve, flow sensor" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F8233cd2d62ee42f7b4e5ec1a39f85a72?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F8233cd2d62ee42f7b4e5ec1a39f85a72?format=webp&width=800"],
+    brochureUrl: "/brochures/water-vending-controller-with-rfid-card-and-multi-coin.pdf",
+    pdfUrl: "/pdfs/water-vending-controller-with-rfid-and-multi-coin.pdf",
   },
-
   {
     slug: "water-flow-sensor-1-inch",
-    title: "1 Inch Brass Water Flow Sensor",
+    title: "SEN-HZG1WA 1 Inch Brass Water Flow Sensor",
     category: "Accessories",
     description:
-      "Brass flow sensor for industrial and domestic water systems.",
-    features: ["Brass Body", "High Accuracy", "Wide Flow Range"],
-    specs: [
-      { label: "Size", value: "1 Inch" },
-      { label: "Flow", value: "4–45 LPM" },
+      "Brass water flow sensor widely applied in industrial and household electrical appliances for monitoring liquid flow rate.",
+    features: [
+      "FDA certified materials",
+      "Golden brass copper construction",
+      "Wide flow range capability",
+      "Suitable for water dispensers, purifiers, coffee machines",
+      "Can be used in water heaters and medical testing machines",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F7b505fc27d074b8da5aa436463c5ffa2",
-    pdfUrl: "/pdfs/accessories/1-inch-flow-sensor.pdf",
+    specs: [
+      { label: "Model", value: "SEN-HZG1WA" },
+      { label: "Material", value: "Brass Copper" },
+      { label: "Color", value: "Golden" },
+      { label: "Flow Range", value: "4-45 L/min" },
+      { label: "Pressure Performance", value: "≤1.75 Mpa" },
+      { label: "Water Temperature", value: "≤80°C" },
+      { label: "Size", value: "1 Inch" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F7b505fc27d074b8da5aa436463c5ffa2?format=webp&width=800",
+    pdfUrl: "/pdfs/1-inch-flow-sensor.pdf",
   },
-
   {
     slug: "solenoid-valve-brass-ac230",
-    title: "Solenoid Valve - Brass, AC 230V",
+    title: "Solenoid Valve AC 230V Brass",
     category: "Accessories",
-    description: "Brass solenoid valve suitable for AC 230V installations.",
-    features: ["Brass Body", "AC 230V", "Reliable Operation"],
-    specs: [
-      { label: "Material", value: "Brass" },
-      { label: "Voltage", value: "AC 230V" },
+    description:
+      "Electromechanically operated solenoid valve for controlling water flow. Features electromagnetic actuator for reliable performance.",
+    features: [
+      "AC 230V powered",
+      "Brass body construction",
+      "Electromagnetic plunger mechanism",
+      "Spring return operation",
+      "Reliable fluid control",
+      "Multiple port configurations available",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Ff13a8e8b21274f5eb14278d74b788ca8",
-    pdfUrl: "/pdfs/accessories/3-by-4-inch-1-inch-brass-sv-ac.pdf",
+    specs: [
+      { label: "Voltage", value: "AC 230V" },
+      { label: "Material", value: "Brass" },
+      { label: "Operation Type", value: "Electromechanically Operated" },
+      { label: "Mechanism", value: "Electromagnetic Plunger with Spring Return" },
+      { label: "Available Sizes", value: "3/4 Inch, 1 Inch" },
+      { label: "Fluid Control", value: "Water / Liquid Flow Regulation" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F02a5c4831b9d4f2292c6922be838f7ab?format=webp&width=800",
+    pdfUrl: "/pdfs/3-by-4-inch-1-inch-brass-sv-ac.pdf",
   },
-
   {
     slug: "solenoid-valve-ss304-ac230",
-    title: "Solenoid Valve - SS304, AC 230V",
+    title: "Solenoid Valve AC 230V SS 304",
     category: "Accessories",
-    description: "Stainless steel (SS304) solenoid valve for AC 230V use.",
-    features: ["SS304 Body", "AC 230V", "Durable Construction"],
-    specs: [
-      { label: "Material", value: "SS304" },
-      { label: "Voltage", value: "AC 230V" },
+    description:
+      "Stainless steel solenoid valve for superior corrosion resistance. Ideal for demanding water control applications.",
+    features: [
+      "AC 230V powered",
+      "SS 304 stainless steel construction",
+      "Superior corrosion resistance",
+      "Electromagnetic plunger mechanism",
+      "Spring return operation",
+      "High durability and longevity",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F88be0b12fff1436aafa23616c3ca0a43",
-    pdfUrl: "/pdfs/accessories/3-by-4-inch-1-inch-ss-304-sv-ac.pdf",
+    specs: [
+      { label: "Voltage", value: "AC 230V" },
+      { label: "Material", value: "Stainless Steel 304" },
+      { label: "Operation Type", value: "Electromechanically Operated" },
+      { label: "Mechanism", value: "Electromagnetic Plunger with Spring Return" },
+      { label: "Available Sizes", value: "3/4 Inch, 1 Inch" },
+      { label: "Corrosion Resistance", value: "High (SS 304)" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F77b7c1b6b91c45de9eaa2101165632c5?format=webp&width=800",
+    pdfUrl: "/pdfs/3-by-4-inch-1-inch-ss-304-sv-ac.pdf",
   },
-
   {
     slug: "flow-sensor-3-4-inch",
-    title: "3/4 Inch Flow Sensor",
+    title: "Flow Sensor 3/4 Inch (SEN-HZ43WA)",
     category: "Accessories",
-    description: "Flow sensor for medium flow ranges (3/4 inch).",
-    features: ["Robust Design", "Accurate Measurement", "Easy Installation"],
-    specs: [
-      { label: "Size", value: "3/4 Inch" },
-      { label: "Flow", value: "10–60 LPM" },
+    description:
+      "Hall-effect water flow sensor for measuring liquid flow rates. Compact design with hall-effect sensor technology for accurate pulse signals.",
+    features: [
+      "Plastic valve body construction",
+      "Hall-effect sensor technology",
+      "Water rotor mechanism",
+      "Accurate pulse signal output",
+      "Flexible installation direction",
+      "Wide application range",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F5dc5c5e40ea640059f5337c84cc5d6e5?format=webp&width=800",
-    pdfUrl: "/pdfs/accessories/3-by-4-inch-flow-sensor.pdf",
+    specs: [
+      { label: "Model", value: "SEN-HZ43WA" },
+      { label: "Size", value: "3/4 Inch" },
+      { label: "Type", value: "Hall-Effect Sensor" },
+      { label: "Construction", value: "Plastic Valve Body with Water Rotor" },
+      { label: "Output", value: "Pulse Signal" },
+      { label: "Speed Variation", value: "Proportional to Flow Rate" },
+      { label: "Installation", value: "Customizable Direction" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F0fa9afba93164b4c810db5def2af61fa%2F1ff036640ebe488aba415314d1ff7503?format=webp&width=800",
+    pdfUrl: "/pdfs/3-by-4-inch-flow-sensor.pdf",
   },
-
   {
     slug: "high-pressure-switch",
-    title: "High Pressure Switch (HPS)",
+    title: "High Pressure Switch for RO/Water Industry",
     category: "Accessories",
-    description: "High pressure switch for system protection and safety.",
-    features: ["Adjustable Setpoint", "Reliable Cut-off", "Compact"],
-    specs: [{ label: "Type", value: "High Pressure Switch" }],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F147cb09e6fb8447f8389abf000c46d79?format=webp&width=800",
-    pdfUrl: "/pdfs/accessories/hps.pdf",
+    description:
+      "Pressure protection switch fitted on the output side of RO booster pump. Automatically turns off power supply when back pressure increases due to system blockage.",
+    features: [
+      "Fitted on RO booster pump output side",
+      "Protects pump from high back pressure",
+      "Adjustable pressure settings",
+      "Manual hex screw adjustment",
+      "Prevents system damage from blockages",
+      "Multiple pressure range options",
+    ],
+    specs: [
+      { label: "Application", value: "RO Booster Pump Output" },
+      { label: "Function", value: "High Pressure Protection" },
+      { label: "ON Pressure Range", value: "35-55 PSI (adjustable)" },
+      { label: "OFF Pressure Range", value: "15-30 PSI (adjustable)" },
+      { label: "Adjustment Method", value: "Hex Screw on Top" },
+      { label: "Available Ranges", value: "2.0-25.0 PSI, 2.0-70 PSI, 3.5-50 Kg/cm2" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F02ab5a69267241c49e7e6ab40083cf4a?format=webp&width=800",
+    pdfUrl: "/pdfs/hps.pdf",
   },
-
   {
     slug: "low-pressure-switch",
-    title: "Low Pressure Switch (LPS)",
+    title: "Low Pressure Switch for RO/Water Industry",
     category: "Accessories",
-    description: "Low pressure switch for dry-run protection and safety.",
-    features: ["Low Pressure Cut-off", "Simple Installation", "Reliable"],
-    specs: [{ label: "Type", value: "Low Pressure Switch" }],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F2434ee1e19024926a7e78ff5aeb9b095?format=webp&width=800",
-    pdfUrl: "/pdfs/accessories/lps.pdf",
+    description:
+      "Protection switch for RO systems designed to prevent pump dry-run by detecting loss of feed water. Automatically stops the system when input pressure drops.",
+    features: [
+      "Protects pump from dry-run situations",
+      "Detects loss of feed water",
+      "Located between pump and water tap/pipe",
+      "Automatic system shutdown on low pressure",
+      "Extends RO booster pump life",
+      "Multiple pressure range options",
+    ],
+    specs: [
+      { label: "Application", value: "RO Feed Water Protection" },
+      { label: "Function", value: "Low Pressure Protection" },
+      { label: "Location", value: "Between Pump and Water Tap/Pipe" },
+      { label: "Trigger Point", value: "When Input Pressure Reaches Zero" },
+      { label: "System Response", value: "Automatic Shutdown" },
+      { label: "Available Ranges", value: "0.5-5.0 bar, 0.5-5.0 Kg/cm2" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F2009956f17b14516bea428484c8b10ff?format=webp&width=800",
+    pdfUrl: "/pdfs/lps.pdf",
   },
-
   {
     slug: "rfid-cards-water-atm",
-    title: "RFID Cards for Water ATM",
+    title: "Smart Cards/RFID Cards for Water ATM's",
     category: "Accessories",
-    description: "RFID cards designed for use with our water vending systems.",
-    features: ["Durable Cards", "Pre-programmable", "Compatible with RFID Controllers"],
-    specs: [{ label: "Type", value: "RFID Card" }],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F8355c091e7a845939850375afb957431?format=webp&width=800",
-    pdfUrl: "/pdfs/accessories/rfid-cards-for-water-atm.pdf",
+    description:
+      "RFID/Smart cards designed for Water ATM (Anytime Water Machines) systems. Enable automatic water dispensation with smartphone-based recharge functionality.",
+    features: [
+      "Compatible with Water ATM machines",
+      "Smartphone-based recharge functionality",
+      "Easy card identification and user verification",
+      "Quick recharge process via app",
+      "Community RO solution",
+      "Safe drinking water alternative",
+    ],
+    specs: [
+      { label: "System Type", value: "Water ATM (Anytime Water Machines)" },
+      { label: "Card Type", value: "RFID/Smart Card" },
+      { label: "Application", value: "Automatic Water Dispensation" },
+      { label: "Recharge Method", value: "Smartphone App / Recharge Unit" },
+      { label: "Card Identification", value: "Automatic User Recognition" },
+      { label: "Use Case", value: "Community RO / Safe Drinking Water Solution" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F2569ea02fb174a0280332403024123e6?format=webp&width=800",
+    pdfUrl: "/pdfs/rfid-cards-for-water-atm.pdf",
   },
-
   {
     slug: "gsm-gprs-water-vending-rfid",
-    title: "GSM/GPRS Water Vending Controller - RFID",
+    title: "GSM/GPRS Based Water Vending Controller With RFID Card",
     category: "Water ATW",
     description:
-      "GSM/GPRS based water vending controller with RFID card support for remote monitoring.",
-    features: ["GSM/GPRS Connectivity", "RFID Support", "Remote Alerts"],
-    specs: [
-      { label: "Connectivity", value: "GSM / GPRS" },
-      { label: "Control", value: "RFID" },
+      "GSM/GPRS enabled flow-based RFID water controller with remote monitoring, multi-tap operation, adjustable volume/price and real-time data transmission.",
+    features: [
+      "Battery backup with solar charging provision",
+      "GSM/GPRS connectivity for real-time monitoring",
+      "RFID card-based dispensing control",
+      "Operate with two, three and four taps",
+      "Adjustable dispensing volume and price",
+      "Four dispensing modes: Normal, Normal & Cold, Fixed, Free",
+      "Remote monitoring via Android app and web portal/cloud",
+      "Real-time data transmission and alerts",
+      "Multi-tap configuration support",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2Fd7971cc656024fdda77374a2298aa392?format=webp&width=800",
-    brochureUrl:
-      "/brochures/water-atw/gsm-gprs-based-water-vending-controller-with-rfid-card.pdf",
-    pdfUrl:
-      "/pdfs/water-atw/gsm-gprs-based-water-vending-controller-with-rfid-card.pdf",
+    specs: [
+      { label: "ATW Configuration", value: "Flow Based – GSM/GPRS + RFID Water Controller" },
+      { label: "Size", value: "Skid (L=160mm, W=50mm, H=225mm)" },
+      { label: "Water Pump", value: "1/2 HP (with gravity, pump not required)" },
+      { label: "Output Connection", value: "Water pump, AC/DC solenoid valve, flow sensor" },
+      { label: "Connectivity", value: "GSM/GPRS with cloud-based monitoring" },
+      { label: "Control Method", value: "RFID Card-based" },
+      { label: "Tap Configuration", value: "2, 3, or 4 tap options" },
+      { label: "Monitoring", value: "Android app and web portal access" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F72a88a22bde74914bfa1946ca482bd1d%2Ff155d47a0d794804af0de2faf511e37e?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F72a88a22bde74914bfa1946ca482bd1d%2Ff155d47a0d794804af0de2faf511e37e?format=webp&width=800"],
+    brochureUrl: "/brochures/gsm-gprs-based-water-vending-controller-with-rfid-card.pdf",
+    pdfUrl: "/pdfs/gsm-gprs-based-water-vending-controller-with-rfid-card.pdf",
   },
-
   {
     slug: "gsm-gprs-water-vending-rfid-coin",
-    title: "GSM/GPRS Water Vending Controller - RFID + Coin",
+    title: "GSM/GPRS Based Water Vending Controller With RFID Card & Multi Coin",
     category: "Water ATW",
     description:
-      "GSM/GPRS controller for water vending with RFID card and multi-coin support.",
-    features: ["GSM/GPRS", "RFID + Coin Support", "Remote Management"],
-    specs: [
-      { label: "Connectivity", value: "GSM / GPRS" },
-      { label: "Control", value: "RFID + Coin" },
+      "GSM/GPRS enabled combo water controller supporting both RFID card and multi-coin with remote monitoring, multi-tap operation and real-time cloud integration.",
+    features: [
+      "Battery backup with solar charging provision",
+      "GSM/GPRS connectivity for real-time monitoring",
+      "Dual payment method: RFID card and multi-coin",
+      "Operate with two, three and four taps",
+      "Adjustable dispensing volume and price",
+      "Four dispensing modes: Normal, Normal & Cold, Fixed, Free",
+      "Remote monitoring via Android app and web portal/cloud",
+      "Real-time data transmission and alerts",
+      "Six types of coins programmable",
+      "Multi-functional card and coin controller",
     ],
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2F55d61897157745e29acfd486bb975d0e%2F58b501f22bc5452e8e8eb0236ca032e7?format=webp&width=800",
-    brochureUrl:
-      "/brochures/water-atw/gsm-gprs-based-water-vending-controller-with-rfid-card-combo-gsm.pdf",
-    pdfUrl:
-      "/pdfs/water-atw/gsm-gprs-based-water-vending-controller-with-rfid-card-and-multi-coin.pdf",
+    specs: [
+      { label: "ATW Configuration", value: "Flow Based – GSM/GPRS + RFID + Coin Water Controller (Combo)" },
+      { label: "Size", value: "Skid (L=160mm, W=50mm, H=225mm)" },
+      { label: "Water Pump", value: "1/2 HP (with gravity, pump not required)" },
+      { label: "Output Connection", value: "Water pump, AC/DC solenoid valve, flow sensor" },
+      { label: "Connectivity", value: "GSM/GPRS with cloud-based monitoring" },
+      { label: "Payment Methods", value: "RFID Card + Multi-Coin (up to 6 types)" },
+      { label: "Tap Configuration", value: "2, 3, or 4 tap options" },
+      { label: "Monitoring", value: "Android app and web portal access" },
+    ],
+    image: "https://cdn.builder.io/api/v1/image/assets%2F72a88a22bde74914bfa1946ca482bd1d%2F17b542c70bc8452480908c7629071c2c?format=webp&width=800",
+    gallery: ["https://cdn.builder.io/api/v1/image/assets%2F72a88a22bde74914bfa1946ca482bd1d%2F17b542c70bc8452480908c7629071c2c?format=webp&width=800"],
+    brochureUrl: "/brochures/gsm-gprs-based-water-vending-controller-with-rfid-card-and-multi-coin.pdf",
+    pdfUrl: "/pdfs/gsm-gprs-based-water-vending-controller-with-rfid-card-and-multi-coin.pdf",
   },
 ];
 
-export const PRODUCTS_BY_SLUG = Object.fromEntries(
-  PRODUCTS.map((p) => [p.slug, p])
-);
-
-export const CATEGORIES: ("All" | CategoryKey)[] = [
-  "All",
-  "RO Control Panel",
-  "Accessories",
-  "Water ATW",
-  "Starters",
-];
+export const PRODUCTS_BY_SLUG = Object.fromEntries(PRODUCTS.map((p) => [p.slug, p]));
+export const CATEGORIES: ("All" | CategoryKey)[] = ["All", "RO Control Panel", "Accessories", "Water ATW", "Starters"];
