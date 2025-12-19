@@ -26,7 +26,7 @@ export default function ProductDivisionContacts() {
   const divisions: ProductDivision[] = [
     {
       title: "INDUSTRIAL & COMMERCIAL",
-      description: "(80, Water ATM, Auto Wells, etc)",
+      description: "(RO, Water ATM, etc)",
       icon: <Building2 className="h-6 w-6" />,
       bgColor: "bg-red-50",
       iconBgColor: "bg-blue-100 text-blue-600",
@@ -40,7 +40,8 @@ export default function ProductDivisionContacts() {
       ],
     },
     {
-      title: "WEST TO PRODUCTS",
+      title: "UF & WASTE WATER PRODUCTS",
+      description: "(PUMP STARTERS)",
       icon: <Leaf className="h-6 w-6" />,
       bgColor: "bg-pink-50",
       iconBgColor: "bg-blue-100 text-blue-600",

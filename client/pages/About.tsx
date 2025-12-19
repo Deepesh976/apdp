@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Award, Factory, Lightbulb, Users, ArrowRight, CheckCircle, Zap, Shield, X } from "lucide-react";
+import { Award, Factory, Lightbulb, Users, ArrowRight, CheckCircle, Zap, Shield } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const aboutCopy = {
@@ -461,22 +461,23 @@ export default function About() {
       <section className="bg-gradient-to-b from-white to-slate-50 py-16 md:py-24">
         <div className="container">
           {/* Section Header */}
-          <div className="mb-16 text-center">
+          <div className="mb-20 text-center">
             <div className="mb-4 inline-flex gap-2">
               <div className="h-1.5 w-8 bg-accent rounded-full"></div>
               <div className="h-1.5 w-8 bg-accent rounded-full"></div>
             </div>
-            <h2 className="mb-4 text-4xl font-black uppercase tracking-tighter text-primary">Directors</h2>
+            <h2 className="mb-4 text-4xl font-black uppercase tracking-tighter text-primary">Leadership</h2>
+            <p className="text-lg text-foreground/70">Our visionary team driving innovation and excellence</p>
           </div>
 
           {/* Featured Director */}
           <div
             onClick={() => openProfile('director', featuredDirector)}
-            className="mb-16 rounded-2xl border border-slate-200 bg-white p-8 shadow-lg md:p-12 cursor-pointer transition hover:shadow-2xl hover:border-accent/50"
+            className="mb-20 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg md:p-16 cursor-pointer transition hover:shadow-2xl hover:border-accent/50"
           >
-            <div className="grid items-center gap-8 md:grid-cols-2">
+            <div className="grid items-center gap-12 md:grid-cols-2">
               <div className="flex items-center justify-center">
-                <div className="relative h-64 w-64 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 overflow-hidden flex items-center justify-center group-hover:from-accent/30 group-hover:to-primary/30 transition">
+                <div className="relative h-72 w-72 rounded-full bg-gradient-to-br from-accent/20 to-primary/20 overflow-hidden flex items-center justify-center group-hover:from-accent/30 group-hover:to-primary/30 transition">
                   {featuredDirector.avatar ? (
                     <img src={featuredDirector.avatar} alt={featuredDirector.name} className="h-full w-full object-cover" />
                   ) : (
@@ -485,12 +486,12 @@ export default function About() {
                 </div>
               </div>
               <div>
-                <h3 className="mb-2 text-3xl font-black uppercase tracking-tighter text-primary">{featuredDirector.name}</h3>
-                <p className="mb-4 text-lg font-semibold uppercase tracking-wide text-accent">{featuredDirector.title}</p>
-                <p className="mb-6 text-foreground/80 leading-relaxed">
+                <h3 className="mb-3 text-3xl font-black uppercase tracking-tighter text-primary">{featuredDirector.name}</h3>
+                <p className="mb-6 text-xl font-semibold uppercase tracking-wide text-accent">{featuredDirector.title}</p>
+                <p className="mb-8 text-lg text-foreground/80 leading-relaxed">
                   {featuredDirector.bio}
                 </p>
-                <a href={`mailto:${featuredDirector.email}`} className="text-sm font-semibold text-primary hover:text-accent transition">
+                <a href={`mailto:${featuredDirector.email}`} className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-accent transition">
                   {featuredDirector.email}
                 </a>
                 {featuredDirector.phone && (
@@ -503,34 +504,37 @@ export default function About() {
           </div>
 
           {/* Other Directors */}
-          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-3 justify-items-end">
-            {directors.map((director) => (
-              <div
-                key={director.name}
-                onClick={() => openProfile('director', director)}
-                className="group rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm hover:shadow-lg transition cursor-pointer hover:border-accent/50"
-              >
-                <div className="mb-4 flex justify-center">
-                  <div className="h-40 w-40 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center text-white text-4xl font-bold group-hover:from-primary/50 group-hover:to-accent/50 transition overflow-hidden">
-                    {director.avatar && director.avatar.includes('http') ? (
-                      <img src={director.avatar} alt={director.name} className="h-full w-full object-cover" />
-                    ) : (
-                      director.avatar
-                    )}
+          <div>
+            <h3 className="mb-12 text-2xl font-bold uppercase tracking-widest text-primary text-center">Board of Directors</h3>
+            <div className="grid gap-8 md:grid-cols-3">
+              {directors.map((director) => (
+                <div
+                  key={director.name}
+                  onClick={() => openProfile('director', director)}
+                  className="group rounded-3xl border border-slate-200 bg-white p-10 text-center shadow-md hover:shadow-xl transition cursor-pointer hover:border-accent/50 hover:scale-105 duration-300"
+                >
+                  <div className="mb-6 flex justify-center">
+                    <div className="h-56 w-56 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center text-white text-5xl font-bold group-hover:from-primary/50 group-hover:to-accent/50 transition overflow-hidden shadow-lg">
+                      {director.avatar && director.avatar.includes('http') ? (
+                        <img src={director.avatar} alt={director.name} className="h-full w-full object-cover" />
+                      ) : (
+                        director.avatar
+                      )}
+                    </div>
                   </div>
+                  <h3 className="mb-2 text-2xl font-black uppercase tracking-tight text-primary">{director.name}</h3>
+                  <p className="mb-4 text-base uppercase tracking-widest text-accent font-bold">{director.title}</p>
+                  <a href={`mailto:${director.email}`} className="text-sm text-foreground/60 hover:text-primary transition font-medium break-all">
+                    {director.email}
+                  </a>
+                  {director.phone && (
+                    <p className="text-sm text-primary font-semibold mt-3">
+                      {director.phone}
+                    </p>
+                  )}
                 </div>
-                <h3 className="mb-1 font-bold text-primary">{director.name}</h3>
-                <p className="mb-3 text-sm uppercase tracking-wide text-accent font-semibold">{director.title}</p>
-                <a href={`mailto:${director.email}`} className="text-xs text-foreground/60 hover:text-primary transition">
-                  {director.email}
-                </a>
-                {director.phone && (
-                  <p className="text-xs text-primary font-medium mt-2">
-                    {director.phone}
-                  </p>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -621,13 +625,6 @@ export default function About() {
           </DialogTitle>
           {selectedProfile?.type === 'director' && (
             <div className="relative">
-              <button
-                onClick={closeProfile}
-                className="absolute right-0 top-0 p-2 hover:bg-slate-100 rounded-lg transition"
-              >
-                <X className="h-5 w-5" />
-              </button>
-
               <div className="pt-4">
                 <div className="flex flex-col items-center mb-6">
                   <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40 flex items-center justify-center text-white text-5xl font-bold mb-4 overflow-hidden">
@@ -684,13 +681,6 @@ export default function About() {
 
           {selectedProfile?.type === 'coreTeam' && (
             <div className="relative">
-              <button
-                onClick={closeProfile}
-                className="absolute right-0 top-0 p-2 hover:bg-slate-100 rounded-lg transition"
-              >
-                <X className="h-5 w-5" />
-              </button>
-
               <div className="pt-4">
                 <div className="flex flex-col items-center mb-6">
                   <div className="h-32 w-32 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-white text-5xl font-bold mb-4 overflow-hidden">

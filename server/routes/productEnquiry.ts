@@ -66,4 +66,25 @@ router.post("/", async (req: Request, res: Response) => {
   }
 });
 
+// GET /api/admin/product-enquiries
+router.get("/admin/all", async (_req: Request, res: Response) => {
+  try {
+    const enquiries = await ProductEnquiry.find()
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return res.json({
+      success: true,
+      data: enquiries,
+    });
+  } catch (error) {
+    console.error("Fetch product enquiries error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch product enquiries",
+    });
+  }
+});
+
+
 export default router;
