@@ -17,6 +17,8 @@ import Products from "@/pages/Products";
 import ProductDetail from "@/pages/ProductDetail";
 import Contact from "@/pages/Contact";
 
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton"; // ✅ ADD THIS
+
 const queryClient = new QueryClient();
 
 export default function App() {
@@ -37,6 +39,9 @@ export default function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
+
+          {/* ✅ Floating WhatsApp Button (Global) */}
+          <WhatsAppFloatingButton />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

@@ -9,11 +9,11 @@ import L, { LatLngExpression, Map as LeafletMap } from "leaflet";
 // import "leaflet/dist/leaflet.css";
 
 const heroSlides = [
-  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F5023b3e6686549b2a4397d917faf0244?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2Fde2e39d5ad49462b803d8bc3e2d2a461?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2Fc4f5c0c246d4478d9b26991f931226ce?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F917d4e53e9b748a5b4f395bb2ec4f5b7?format=webp&width=1920",
-  "https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F2730ba8130ea4131bcc11c6a31d5bfaa?format=webp&width=1920",
+  "/slides/1.png",
+  "/slides/2.png",
+  "/slides/3.png",
+  "/slides/4.png",
+  "/slides/5.png"
 ];
 
 const features = [
@@ -330,11 +330,11 @@ export default function Index() {
               </Link>
             </div>
             <div className="flex justify-center">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fbca0cf4ef03b4f299210798f9e644ad7%2F4e67bb7ff632452b92e20e5608710e32?format=webp&width=1920"
-                alt="Accord Power Digital Products"
-                className="w-full max-w-md h-auto"
-              />
+<img
+  src="/slides/main.png"
+  alt="Accord Power Digital Products"
+  className="w-full max-w-md h-auto"
+ />
             </div>
           </div>
 
