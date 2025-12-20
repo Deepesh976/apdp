@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Building2, Leaf, Users } from "lucide-react";
+import { Phone, Building2, Leaf } from "lucide-react";
 
 interface RegionalContact {
   region: string;
@@ -10,7 +10,7 @@ interface RegionalContact {
 interface ProductDivision {
   title: string;
   icon: React.ReactNode;
-  description: string;
+  description?: string;
   contacts: RegionalContact[];
   bgColor: string;
   iconBgColor: string;
@@ -26,31 +26,23 @@ export default function ProductDivisionContacts() {
   const divisions: ProductDivision[] = [
     {
       title: "INDUSTRIAL & COMMERCIAL",
-      description: "(80, Water ATM, Auto Wells, etc)",
+      description: "(RO, Water ATM, Auto Wells, etc)",
       icon: <Building2 className="h-6 w-6" />,
       bgColor: "bg-red-50",
       iconBgColor: "bg-blue-100 text-blue-600",
       contacts: [
-        { region: "NORTH & WEST", name: "Shiva", phone: "+91 98765 43210" },
-        {
-          region: "SOUTH & EAST",
-          name: "T Vinod",
-          phone: "+91 98765 43211",
-        },
+        { region: "NORTH & WEST", name: "Shiva (Assistant Sales Manager)", phone: "+91 98765 43210" },
+        { region: "SOUTH & EAST", name: "T Vinod (Assistant Sales Manager)", phone: "+91 98765 43211" },
       ],
     },
     {
-      title: "WEST TO PRODUCTS",
+      title: "WATER ATM PRODUCTS",
       icon: <Leaf className="h-6 w-6" />,
       bgColor: "bg-pink-50",
       iconBgColor: "bg-blue-100 text-blue-600",
       contacts: [
-        { region: "NORTH & WEST", name: "Vamshi", phone: "+91 98765 43212" },
-        {
-          region: "SOUTH & EAST",
-          name: "Sampath",
-          phone: "+91 98765 43213",
-        },
+        { region: "NORTH & WEST", name: "Vamshi (Assistant Sales Manager)", phone: "+91 98765 43212" },
+        { region: "SOUTH & EAST", name: "Sampath (Assistant Sales Manager)", phone: "+91 98765 43213" },
       ],
     },
     {
@@ -60,7 +52,7 @@ export default function ProductDivisionContacts() {
       bgColor: "bg-orange-50",
       iconBgColor: "bg-blue-100 text-blue-600",
       contacts: [
-        { region: "ALL REGIONS", name: "Ranjit", phone: "+91 98765 43214" },
+        { region: "ALL REGIONS", name: "Ranjit (Regional Manager)", phone: "+91 98765 43214" },
       ],
     },
   ];
@@ -73,12 +65,12 @@ export default function ProductDivisionContacts() {
     },
     {
       states: "KA, TN, KL",
-      languages: "Tamil, English / Hindi",
+      languages: "Tamil / English / Hindi",
       contact: "8977034147",
     },
     {
       states: "JM, HR, HP, DL, UP, BH, RJ, MP",
-      languages: "Hindi/English",
+      languages: "Hindi / English",
       contact: "8977034148",
     },
   ];
@@ -130,7 +122,9 @@ export default function ProductDivisionContacts() {
                     <p className="text-sm font-semibold text-primary mb-1">
                       {contact.name}
                     </p>
-                    <p className="text-sm text-foreground/70">{contact.phone}</p>
+                    <p className="text-sm text-foreground/70">
+                      {contact.phone}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -138,36 +132,8 @@ export default function ProductDivisionContacts() {
           ))}
         </div>
 
-        {/* Customer Care & Regional Support */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {/* Customer Care */}
-          <div className="bg-pink-50 rounded-2xl p-6 shadow-md border border-slate-200">
-            <div className="flex items-start gap-3 mb-6">
-              <div className="bg-pink-100 text-pink-600 p-3 rounded-lg">
-                <Users className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-sm font-black uppercase tracking-wide text-accent">
-                  Customer Care
-                </h3>
-                <p className="text-xs text-foreground/60">(Support & Inquiries)</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <p className="text-xs font-bold uppercase text-accent mb-2">
-                  Toll Free Support
-                </p>
-                <p className="text-sm font-semibold text-primary mb-1">
-                  Customer Support Team
-                </p>
-                <p className="text-sm text-foreground/70">+91 99999 99999</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Regional Support */}
+        {/* Regional Support (Customer Care REMOVED) */}
+        <div className="grid grid-cols-1 gap-6">
           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 shadow-md border border-blue-100">
             <h3 className="text-sm font-black uppercase tracking-wide text-secondary mb-2">
               Regional Support
